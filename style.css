@@ -1,0 +1,22 @@
+/* style.css
+Stylesheet for improvhistory.com
+*/
+
+body {font-family: "Helvetica", "Arial", "sans-serif"; }
+
+.container {
+	margin: 2%;
+
+}
+
+.banner {
+	position: relative;
+	height: 500px;
+	max-height: 75%;
+}
+
+.image {
+	/* max-width: 100%; */
+	background: url("improvhistory.jpeg") no-repeat;
+	background-size: 100%;
+}
