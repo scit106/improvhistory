@@ -7,6 +7,11 @@ body {
 	background-color: rgb(240,235,230);
 }
 
+a {
+	text-decoration: none;
+	color: rgb(0,0,0);
+}
+
 ul {
 	border: 2px solid black;
 	padding: 1%;
@@ -24,6 +29,7 @@ li {
 img {
 	width: 100%;
 	z-index: 10;
+	margin: 0px;
 }
 
 li .block {
@@ -37,6 +43,7 @@ li .block {
 
 .banner {
 	position: relative;
+	margin-bottom: 0px;
 }
 
 .image {
