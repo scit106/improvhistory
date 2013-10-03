@@ -21,6 +21,10 @@ li {
 	box-sizing: border-box;
 }
 
+img {
+	width: 100%;
+}
+
 li.block {
 	border: 1px solid black;
 }
@@ -37,10 +41,10 @@ li.block {
 
 .image {
 	/* height: 500px; */
-	min-height: 100px;
-	background: url("improvhistory.jpeg") no-repeat;
+	/*min-height: 100px;*/
+	/*background: url("improvhistory.jpeg") no-repeat;*/
 	background-size: 100%;
-
+	width: 100%;
 }
 
 .hidden {
