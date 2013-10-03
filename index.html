@@ -13,28 +13,48 @@
 		</div>
 		<div class="hidden" id="about">
 		<!-- this is where popup information will go -->
-			<p>This is some text</p>
+			<p>This is where information about our show will go</p>
 		</div>
 		<div class="hidden" id="schedule">
 		<!-- this is where popup information will go -->
+			<p>there might be a schedule of upcoming shows here eventually</p>
 		</div>
 		<div class="hidden" id="cast">
 		<!-- this is where popup information will go -->
+			<p>And this is where we might have headshots or the like</p>
 		</div>
 	</div>
 	<div class="row">
 		<ul class="menu">
 			<li>
-					<a onMouseOver="document.getElementById('about').style.display='block';document.getElementbyClass('hidden').style.display='block'" href="javascript:void(0)">
-						About
-					</a>
+				<a onMouseOver="showInfo('about')" 
+					onMouseOut="hideInfo('about')" 
+					href="javascript:void(0)">About</a>
 			</li>
-			<li><a href="#">Schedule</a></li>
-			<li><a href="#">Cast</a></li>
+			<li>
+				<a onMouseOver="showInfo('schedule')" 
+					onMouseOut="hideInfo('schedule')" 
+					href="javascript:void(0)">Schedule</a>
+			</li>
+			<li>
+				<a onMouseOver="showInfo('cast')" 
+					onMouseOut="hideInfo('cast')" 
+					href="javascript:void(0)">Cast</a>
+			</li>
 		</ul>
 	</div>
 </div>
 <script type="text/javascript">
+var shown = new Array();
+	function showInfo(item){
+		document.getElementById(item).style.display='block';
+		shown.push(item)
+		// document.querySelectorAll('.hidden').style.display='block';
+	};
+
+	function hideInfo(item){
+		document.getElementById(item).style.display='none';
+	};
 
 </script>
 </body>
