@@ -52,8 +52,11 @@ var shown = new Array();
 		// document.querySelectorAll('.hidden').style.display='block';
 	};
 
-	function hideInfo(item){
-		document.getElementById(item).style.display='none';
+	function hideInfo(){
+		for(var x = 0; x < shown.length; x++){
+			document.getElementById(shown[x]).style.display='none';
+		}; 
+		shown.length = 0;
 	};
 
 </script>
