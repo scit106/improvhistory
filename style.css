@@ -23,6 +23,7 @@ li {
 
 img {
 	width: 100%;
+	z-index: 10;
 }
 
 li.block {
@@ -36,21 +37,28 @@ li.block {
 
 .banner {
 	position: relative;
-	display: block;
 }
 
 .image {
-	/* height: 500px; */
-	/*min-height: 100px;*/
-	/*background: url("improvhistory.jpeg") no-repeat;*/
+	background: url("improvhistory.jpeg") no-repeat;
 	background-size: 100%;
 	width: 100%;
+	z-index: 0;
 }
 
 .hidden {
-	display:none;
+	/*display:none;*/
+	background-color: rgb(250,250,250);
+	min-height: 100px;
+	z-index: 100;
+	position: absolute;
+	width: 100%;
+	left: 0%;
+	top: 0%;
+	bottom: 0%;
 }
 
 .row {
 	position: relative;
+	clear: both;
 }
