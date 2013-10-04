@@ -11,24 +11,33 @@
 		<div class="image">
 			<img src="improvhistory.jpeg">
 		</div>
-		<div class="hidden" id="about">
-		<!-- this is where popup information will go -->
-			<p>This is where information about our show will go</p>
+		<div class="hidden"
+		onMouseOut="hideInfo()"
+		id="about">
+			<h3 class="content title">About</h3>
+			<p class='content'>
+				An Improvised People's History is a long-form improv comedy show based on US History. We start each show by reading from a real US History textbook and building scenes that might have taken place in history as inspired by the themes of the passage. We perform at ImprovBoston in the lovely and historic Cambridge, MA.
+			</p>
 		</div>
-		<div class="hidden" id="schedule">
-		<!-- this is where popup information will go -->
-			<p>there might be a schedule of upcoming shows here eventually</p>
+		<div class="hidden" 
+		onMouseOut="hideInfo()"
+		id="schedule">
+			<h3 class="content title">Schedule</h3>
+			<p class='content'>We have two shows currently scheduled:</p>
+			<p class='content'>Sunday, October 13th, 7:00 PM @ ImprovBoston</p>
+			<p class='content'>Wednesday, November 20th, 7:30 PM @ ImprovBoston</p>
 		</div>
-		<div class="hidden" id="cast">
-		<!-- this is where popup information will go -->
-			<p>And this is where we might have headshots or the like</p>
+		<div class="hidden" 
+		onMouseOut="hideInfo()"
+		id="cast">
+			<h3 class="content title">Cast</h3>
+			<p class='content'>List Coming Soon</p>
 		</div>
 	</div>
 	<div class="row">
 		<ul class="menu">
 			<li>
 				<a onMouseOver="showInfo('about')" 
-				onMouseOut="hideInfo()"
 					href="javascript:void(0)">About</a>
 			</li>
 			<li>
@@ -45,6 +54,7 @@
 <script type="text/javascript">
 var shown = new Array();
 	function showInfo(item){
+		hideInfo();
 		document.getElementById(item).style.display='block';
 		shown.push(item)
 		// document.querySelectorAll('.hidden').style.display='block';

@@ -63,6 +63,7 @@ li .block {
 	left: 0%;
 	top: 0%;
 	bottom: 0%;
+	opacity: .7;
 }
 
 .row {
@@ -72,4 +73,18 @@ li .block {
 
 .menu {
 	margin-top: 0px;
+}
+
+.content {
+	margin-left: 4%;
+	margin-top: 2%;
+	margin-right: 2%;
+	font-family: 'Palatino', 'Garamond', serif;
+	font-size: 100%;
+}
+
+.title {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	font-weight: 600;
+	font-size: 120%;
 }
