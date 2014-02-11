@@ -73,7 +73,6 @@ a:hover {
 }
 
 .nav {
-	display: table;
 	position: fixed;
 	top: 0px;
 	width: 100%;
@@ -82,19 +81,23 @@ a:hover {
 	-webkit-box-shadow: -2px 2px 10px 0px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    -2px 2px 10px 0px rgba(50, 50, 50, 0.75);
 	box-shadow:         -2px 2px 10px 0px rgba(50, 50, 50, 0.75);
-	padding: 10px;
+	padding: 10px 22px;
 	text-align: center;
 }
 
 .navlinks {
-	display: inline-block;
-	float: right;
+	position: absolute;
+	margin-right: 22px;
+	bottom: 10px;
+	right: 44px;
 }
 
 .navlink {
 	display: inline-block;
-	padding: 22px;
+	padding-left: 10px;
+	padding-right: 10px;
 	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 120%;
 }
 
 .section-header {
@@ -107,7 +110,7 @@ a:hover {
 .centered-max-width {
 	margin-right: auto;
 	margin-left: auto;
-	max-width: 1024px;
+	max-width: 1200px;
 }
 
 .paragraph {
