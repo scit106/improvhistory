@@ -19,6 +19,10 @@ ul {
 	list-style: none;
 }
 
+p {
+	margin: 0px;
+}
+
 a {
 	text-decoration: none;
 	color: inherit;
@@ -104,12 +108,17 @@ a:hover {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+	font-size: 200%
 }
 
 .centered-max-width {
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 1200px;
+}
+
+.centered-content {
+	text-align: center;
 }
 
 .paragraph {
@@ -127,6 +136,34 @@ a:hover {
     clear:both;
 }
 
+.cast-member {
+	display: inline-block;
+	padding: 11px;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.cast-member-photo {
+	background-color: white;
+	height: 120px;
+	width: 120px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cast-member-photo img {
+	width: 100%;
+}
+
+.cast-name {
+	margin-top: 5px;
+}
+
+.cast-nickname {
+	font-size: 90%;
+}
+
 /* Specific Elements */
 #page-title {
 	margin-bottom: 20px;
@@ -138,8 +175,20 @@ a:hover {
 
 #welcome {
 	margin-top: 75px;
+	padding-top: 60px;
 	background-image: url(images/GlobeBk.jpg);
-	background-position: bottom;
+	background-position: 55% 90%; /* 45% 75% also looks good */
+}
+
+#welcome h2 {
+	margin-bottom: 10px;
+	margin-top: 0px;
+	padding-left: 15px;
+}
+
+#welcome h1 {
+	margin-bottom: 0px;
+	line-height: .7;
 }
 
 #schedule {
@@ -167,9 +216,7 @@ a:hover {
 }
 
 #cast {
-	background-color: #beaa79;
 }
 
 #contact {
-	background-color: #4c5a61;
 }
