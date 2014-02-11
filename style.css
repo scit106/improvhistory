@@ -2,89 +2,254 @@
 Stylesheet for improvhistory.com
 */
 
+/* Default Overrides */
 body {
-	font-family: "Helvetica", "Arial", "sans-serif"; 
-	background-color: rgb(240,235,230);
+	margin: 0px;
+	padding: 0px;
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0px;
+	padding: 0px;
+}
+
+ul {
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
+
+p {
+	margin: 0px;
 }
 
 a {
 	text-decoration: none;
-	color: rgb(0,0,0);
+	color: inherit;
 }
 
-ul {
-	border: 2px solid black;
-	padding: 1%;
-	list-style-type: none;
-	text-align: center;
-	background-color: rgb(250,250,250)
+a:hover {
+	font-weight: 600;
+	color: white;
 }
 
-li {
-	display: inline-block;
-	margin: 10%;
-	box-sizing: border-box;
+/* Reusable elements */
+.sans-font {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 100;
+}
+.serif-font {
+	font-family: 'Cinzel', serif;
+	font-weight: 300;
+}
+.first-letter {
+	font-family: 'Cinzel Decorative', cursive;
+	font-weight: 300;
 }
 
-img {
-	width: 100%;
-	z-index: 10;
-	margin: 0px;
+.italics {
+	font-style: italic;
 }
 
-li .block {
-	border: 1px solid black;
+.white {
+	color: white;
 }
+
+.off-white-background {
+	background-color: rgb(218,202,192);
+}
+
+.brown-background {
+	background-color: rgb(48,28,18);
+}
+
+/* Layout Elements */
 
 .container {
-	margin: 2%;
-	max-width: 1000px;
-}
-
-.banner {
-	position: relative;
-	margin-bottom: 0px;
-}
-
-.image {
-	background: url("improvhistory.jpeg") no-repeat;
-	background-size: 100%;
 	width: 100%;
-	z-index: 0;
 }
 
-.hidden {
-	display:none;
-	background-color: rgb(250,250,250);
-	min-height: 100px;
+.section {
+	padding: 30px 60px;
+	position: relative;
+	z-index: 0
+}
+
+.nav {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 75px;
 	z-index: 100;
+	-webkit-box-shadow: -2px 2px 10px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    -2px 2px 10px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         -2px 2px 10px 0px rgba(50, 50, 50, 0.75);
+	padding: 10px 22px;
+	text-align: center;
+}
+
+.navlinks {
 	position: absolute;
-	width: 100%;
-	left: 0%;
-	top: 0%;
-	bottom: 0%;
-	opacity: .7;
+	margin-right: 22px;
+	bottom: 10px;
+	right: 44px;
 }
 
-.row {
-	position: relative;
-	clear: both;
-}
-
-.menu {
-	margin-top: 0px;
-}
-
-.content {
-	margin-left: 4%;
-	margin-top: 2%;
-	margin-right: 2%;
-	font-family: 'Palatino', 'Garamond', serif;
-	font-size: 100%;
-}
-
-.title {
-	font-family: 'Helvetica', 'Arial', sans-serif;
-	font-weight: 600;
+.navlink {
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 120%;
+}
+
+.section-header {
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-size: 200%
+}
+
+.centered-max-width {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 1200px;
+}
+
+.centered-content {
+	text-align: center;
+}
+
+.paragraph {
+	max-width: 50%;
+	float: right;
+}
+
+.section:before,
+.section:after {
+    content:"";
+    display:table;
+}
+
+.section:after {
+    clear:both;
+}
+
+.cast-member {
+	display: inline-block;
+	padding: 11px;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.cast-member-photo {
+	background-color: white;
+	height: 120px;
+	width: 120px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cast-member-photo img {
+	width: 100%;
+}
+
+.cast-name {
+	margin-top: 5px;
+}
+
+.cast-nickname {
+	font-size: 90%;
+}
+
+.circle {
+	border-radius: 50%;
+	width: 75px;
+	height: 75px;
+	display: table;
+}
+
+.circle i {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 250%;
+}
+
+.contact-block {
+	display: inline-block;
+	margin: 10px 40px;
+	text-align: center;
+}
+
+.contact-block .contact-text {
+	font-weight: 400;
+	font-size: 120%;
+	padding-top: 10px;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.contact-link .circle:hover {
+	background-color: rgb(126,78,58)
+}
+
+/* Specific Elements */
+#page-title {
+	margin-bottom: 20px;
+}
+
+#logo {
+	float: left;
+}
+
+#welcome {
+	margin-top: 75px;
+	padding-top: 60px;
+	background-image: url(images/GlobeBk.jpg);
+	background-position: 55% 90%; /* 45% 75% also looks good */
+}
+
+#welcome h2 {
+	margin-bottom: 10px;
+	margin-top: 0px;
+	padding-left: 15px;
+}
+
+#welcome h1 {
+	margin-bottom: 0px;
+	line-height: .7;
+}
+
+#schedule {
+/*	background-color: #97b385;*/
+}
+
+#show-dates {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#show-dates th {
+	font-weight: 400;
+}
+
+#show-dates td {
+	line-height: 24pt;
+	vertical-align: middle;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+#show-dates td :first-of-type {
+	padding-left: 10px;
+}
+
+#cast {
+}
+
+#contact {
+	text-align: center;
 }
