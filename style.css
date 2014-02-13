@@ -216,11 +216,12 @@ a:hover {
 	margin-bottom: 10px;
 	margin-top: 0px;
 	padding-left: 15px;
+	line-height: 1;
 }
 
 #welcome h1 {
 	margin-bottom: 0px;
-	line-height: .7;
+	line-height: 1;
 }
 
 #schedule {
@@ -237,10 +238,10 @@ a:hover {
 }
 
 #show-dates td {
-	line-height: 24pt;
 	vertical-align: middle;
 	padding-left: 50px;
 	padding-right: 50px;
+	padding-bottom: 12px
 }
 
 #show-dates td :first-of-type {
@@ -252,4 +253,42 @@ a:hover {
 
 #contact {
 	text-align: center;
+}
+
+/* Responsive queries */
+
+@media (max-width: 967px){
+	#show-dates td {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+@media (max-width: 767px){
+	.navlinks {
+		display: none;
+	}
+}
+
+@media (max-width: 695px){
+	.section {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	#welcome {
+		background-image: none;
+	}
+	.paragraph {
+		max-width: 100%;
+		float: left;
+	}
+}
+
+@media (max-width: 626px){
+	.show-time {
+		display: none;
+	}
+	.show-location {
+		display: none;
+	}
 }
