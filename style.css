@@ -136,6 +136,22 @@ a:hover {
     clear:both;
 }
 
+.ticket-link {
+	display: inline-block;
+	padding: 5px 10px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.eventbrite {
+	background-color: #f16924;
+	color: white;
+}
+
+.eventbrite:hover{
+	background-color: #CC581D;
+}
+
 .cast-member {
 	display: inline-block;
 	padding: 11px;
