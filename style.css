@@ -63,6 +63,10 @@ a:hover {
 	background-color: rgb(48,28,18);
 }
 
+.hide {
+	display: none;
+}
+
 /* Layout Elements */
 
 .container {
@@ -258,11 +262,15 @@ a:hover {
 	vertical-align: middle;
 	padding-left: 50px;
 	padding-right: 50px;
-	padding-bottom: 12px
+	padding-bottom: 12px;
+	position: relative;
 }
 
-#show-dates td :first-of-type {
+#show-dates td:first-of-type {
 	padding-left: 10px;
+}
+
+.location-info {
 }
 
 #cast {
