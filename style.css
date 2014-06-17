@@ -258,6 +258,10 @@ a:hover {
 	font-weight: 400;
 }
 
+#show-dates tr:hover {
+	background-color: rgb(228,212,202);
+}
+
 #show-dates td {
 	vertical-align: middle;
 	padding-left: 50px;
