@@ -264,6 +264,7 @@ a:hover {
 
 #show-dates tr:not(:first-of-type):hover {
 	background-color: rgb(228,212,202);
+	cursor: pointer;
 }
 
 #show-dates td {
@@ -283,7 +284,7 @@ a:hover {
 
 #show-dates .location-info .address {
 	padding: 10px 0px;
-	display: block;
+	display: inline-block;
 }
 
 .show-description {
