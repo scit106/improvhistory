@@ -59,8 +59,16 @@ a:hover {
 	background-color: rgb(218,202,192);
 }
 
+.lighter-off-white-background {
+	background-color: rgb(228,212,202);
+}
+
 .brown-background {
 	background-color: rgb(48,28,18);
+}
+
+.hide {
+	display: none;
 }
 
 /* Layout Elements */
@@ -254,15 +262,33 @@ a:hover {
 	font-weight: 400;
 }
 
-#show-dates td {
-	vertical-align: middle;
-	padding-left: 50px;
-	padding-right: 50px;
-	padding-bottom: 12px
+#show-dates tr:not(:first-of-type):hover {
+	background-color: rgb(228,212,202);
+	cursor: pointer;
 }
 
-#show-dates td :first-of-type {
-	padding-left: 10px;
+#show-dates td {
+	padding: 12px 50px;
+	position: relative;
+}
+
+#show-dates .location-info td{
+	padding: 20px 50px;
+	margin-bottom: 20px;
+	max-width: 500px;
+}
+
+#show-dates .location-info .address {
+	padding: 10px 0px;
+	display: inline-block;
+}
+
+.show-description {
+	padding: 10px 0px;
+}
+
+.show-description a {
+	font-weight: 600;
 }
 
 #cast {
