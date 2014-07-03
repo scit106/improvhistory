@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>An Improvised People's History</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="normalize.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Cinzel|Cinzel+Decorative' rel='stylesheet' type='text/css'>
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="iph.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="nav off-white-background">
+		<div class="centered-max-width">
+			<div id="logo">
+				<a href="index.html"><img src="images/IPHLogo.png"/></a>
+			</div><!-- #logo -->
+			<ul class="navlinks">
+				<li class="navlink"><a href="index.html#welcome" id="about">ABOUT</a></li>
+				<li class="navlink"><a href="index.html#schedule" id="shows">SHOWS</a></li>
+				<li class="navlink"><a href="index.html#cast" id="castlist">CAST</a></li>
+				<li class="navlink"><a href="index.html#contact" id="contactus">CONTACT</a></li>
+			</ul>
+		</div><!-- .centered-max-width -->
+	</div><!-- .nav -->
+	<div class='section brown-background' id="newsletter-intro">
+		<h2 class="serif-font section-header white">
+			<span class="first-letter">S</span>ign up for our <span class="first-letter">N</span>ewsletter
+		</h2>
+		<p class="sans-font white center centered-content text-max-width">
+			Want to stay up-to-date with our show schedule, hear more hilarious history jokes, or watch exclusive video sketches? Enter your information below and we'll send you our monthly newsletter! We promise not to spam you or give out your email address to anyone else.
+		</p>
+		<form id="newsletter-subscribe" class="center centered-content" submit="mailchimpPost">
+			<label class="serif-font white">
+				Your Email:
+				<input class="sans-font" type="text"/>
+			</label>
+			<a action="submit" class="ticket-link brown sans-font off-white-background">Sign Up!</a>
+		</form>
+	</div><!-- .welcome -->
+	<div class='section off-white-background' id='contact'>
+		<h2 class='section-header serif-font'>
+			<span class="first-letter">G</span>et In <span class="first-letter">T</span>ouch
+		</h2>
+		<a class='contact-link' id='email-link' href='mailto:improvisedhistory@gmail.com'>
+			<div class='contact-block'>
+				<div class='circle brown-background'>
+					<i class="fa fa-envelope white"></i>
+				</div><!-- circle -->
+				<a class='contact-text sans-font' href='mailto:improvisedhistory@gmail.com'>EMAIL</a>
+			</div><!-- contact-block -->
+		</a>
+		<a class='contact-link' id='facebook-link' href='https://www.facebook.com/improvhistory'>
+			<div class='contact-block'>
+				<div class='circle brown-background'>
+					<i class="fa fa-facebook white"></i>
+				</div><!-- circle -->
+				<a class='contact-text sans-font' href='https://www.facebook.com/improvhistory'>FACEBOOK</a>
+			</div><!-- contact-block -->
+		</a>
+		<a class='contact-link' id='twitter-link' href='https://twitter.com/improvhistory'>
+			<div class='contact-block'>
+				<div class='circle brown-background'>
+					<i class="fa fa-twitter white"></i>
+				</div><!-- circle -->
+				<a class='contact-text sans-font' href='https://twitter.com/improvhistory'>TWITTER</a>
+			</div><!-- contact-block -->
+		</a>
+	</div><!-- contact -->
+</div><!-- .container -->
+<script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-47994502-1']);
+  _gaq.push(['_setDomainName', 'improvhistory.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

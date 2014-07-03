@@ -33,6 +33,14 @@ a:hover {
 	color: white;
 }
 
+input[type="text"] {
+	border-radius: 5px;
+	border: none;
+	line-height: 1.5;
+	padding: 2px 5px;
+	margin: 10px;
+}
+
 /* Reusable elements */
 .sans-font {
 	font-family: 'Source Sans Pro', sans-serif;
@@ -126,6 +134,15 @@ a:hover {
 	max-width: 1200px;
 }
 
+.text-max-width {
+	max-width: 600px;
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .centered-content {
 	text-align: center;
 }
@@ -194,6 +211,8 @@ a:hover {
 	width: 75px;
 	height: 75px;
 	display: table;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .circle i {
@@ -218,7 +237,7 @@ a:hover {
 }
 
 .contact-link .circle:hover {
-	background-color: rgb(126,78,58)
+	background-color: rgb(126,78,58);
 }
 
 /* Specific Elements */
@@ -298,6 +317,26 @@ a:hover {
 	text-align: center;
 }
 
+#newsletter-intro {
+	margin-top: 75px;
+	padding-top: 60px;
+}
+
+#newsletter-intro form {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+#newsletter-intro form input[type="text"] {
+	width: 200px;
+}
+
+
+a.off-white-background:hover {
+	background-color: rgb(228,212,202);
+	cursor: pointer;
+}
+
 /* Responsive queries */
 
 @media (max-width: 967px){
@@ -333,5 +372,11 @@ a:hover {
 	}
 	.show-location {
 		display: none;
+	}
+	#logo img{
+		max-width: 80%;
+	}
+	.nav {
+		padding: 1%;
 	}
 }
