@@ -350,8 +350,9 @@ input[type="text"], input[type="email"] {
 	display: block;
 }
 
-a.off-white-background:hover {
+#newsletter-intro input.off-white-background:hover {
 	background-color: rgb(228,212,202);
+	color: white;
 	cursor: pointer;
 }
 
