@@ -1,0 +1,17 @@
+{
+  "name": "improvised-history",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.x"
+  },
+  "engines": {
+    "node": "0.10.25"
+  },
+  "scripts": {
+    "start": "supervisor node app.js"
+  }
+}
