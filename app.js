@@ -28,8 +28,14 @@ app.get('/', function(req, res) {
 });
 
 app.get('/subscribers', function(req, res) {
-	// allSubscribers = models.Subsciber.find({});
-	console.log(models.Subscriber);
-	allSubscribers = models.Subscriber.find({});
-	res.send(allSubscribers);
+	models.Subscriber.find({}, function(err, docs){
+		// console.log(allSubscribers);
+		if (!err) {
+			res.send(200, docs);
+		}
+		else {
+			res.send(400, err);
+		}
+	});
+
 });
