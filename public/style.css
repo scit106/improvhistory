@@ -62,6 +62,10 @@ input[type="text"], input[type="email"] {
 	font-style: italic;
 }
 
+.bold {
+	font-weight: 600;
+}
+
 .white {
 	color: white;
 }
