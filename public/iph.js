@@ -21,11 +21,10 @@ $( document ).ready(function(){
 		$.post(
 			'/subscribers'
 			, input
-			);
-	}
-
-	function logPostResponse(data){
-		console.log(data);
+			)
+			.done(function (data){
+				console.log(data);
+			});
 	}
 
 });

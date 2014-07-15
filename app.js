@@ -47,8 +47,18 @@ app.get('/subscribers', function(req, res) {
 });
 
 // add someone to the email list
-app.post('/subscribers', function(request, res) {
-	console.log(request.body);
-	console.log('request received');
-	res.send(200, 'sent');
+app.post('/subscribers', function(req, res) {
+	var newSubscriber = new models.Subscriber(req.body);
+	newSubscriber.save(function (err){
+		if (err) {
+			console.log(err);
+			res.send(500, err);
+		}
+		else {
+			res.send(200, 'Saved Successfully');
+		}
+	});
+	// console.log(req.body);
+	// console.log('request received');
+	// res.send(200, 'sent');
 });
