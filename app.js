@@ -13,12 +13,15 @@ http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
+app.use(express.bodyParser()); // this will be deprecated soon, replace with
+// app.use(express.bodyParser.json());
+// app.use(express.bodyParser.urlencoded());
+
 mongoose.connect('mongodb://localhost/improv-history');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
   console.log('Opened mongoose connection');
-  // models.registerSchemas();
 });
 
 app.use(express.static(__dirname + '/public'));
@@ -27,9 +30,13 @@ app.get('/', function(req, res) {
 	res.sendfile('index.html');
 });
 
+app.get('/newsletter', function(req, res) {
+	res.sendfile('newsletter.html');
+});
+
+// Really, we shouldnt use this - no one should be able to see all of our subscribers
 app.get('/subscribers', function(req, res) {
 	models.Subscriber.find({}, function(err, docs){
-		// console.log(allSubscribers);
 		if (!err) {
 			res.send(200, docs);
 		}
@@ -37,5 +44,11 @@ app.get('/subscribers', function(req, res) {
 			res.send(400, err);
 		}
 	});
+});
 
+// add someone to the email list
+app.post('/subscribers', function(request, res) {
+	console.log(request.body);
+	console.log('request received');
+	res.send(200, 'sent');
 });
