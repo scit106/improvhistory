@@ -24,7 +24,12 @@ $( document ).ready(function(){
 			, input
 			)
 			.done(function (data){
+				$('#newsletter-subscribe').addClass('hide');
+				$('#subscribe-success').removeClass('hide');
 				console.log(data);
+			})
+			.error(function(err){
+				console.log(err.responseText);
 			});
 	}
 
