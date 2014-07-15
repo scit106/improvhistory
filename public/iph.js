@@ -29,7 +29,7 @@ $( document ).ready(function(){
 				console.log(data);
 			})
 			.error(function(err){
-				console.log(err.responseText);
+				alert(err.responseText);
 			});
 	}
 

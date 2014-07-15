@@ -38,7 +38,7 @@ app.get('/newsletter', function(req, res) {
 app.get('/subscribers', function(req, res) {
 	models.Subscriber.find({}, function(err, docs){
 		if (!err) {
-			res.send(200, docs);
+			res.send(200, 'Having fun snooping around?');
 		}
 		else {
 			res.send(400, err);
@@ -48,17 +48,29 @@ app.get('/subscribers', function(req, res) {
 
 // add someone to the email list
 app.post('/subscribers', function(req, res) {
-	var newSubscriber = new models.Subscriber(req.body);
-	newSubscriber.save(function (err){
-		if (err) {
-			console.log(err);
-			res.send(500, err);
-		}
-		else {
-			res.send(200, 'Saved Successfully');
-		}
-	});
-	// console.log(req.body);
-	// console.log('request received');
-	// res.send(200, 'sent');
+	if (req.body.email) {
+		models.Subscriber.findOne({email: req.body.email}, function (err, existingSubscriber){
+			if (err) { // Good, no subscriber exists
+				var newSubscriber = new models.Subscriber(req.body);
+				newSubscriber.save(function (err){
+					if (err) {
+						console.log(err);
+						res.send(500, 'Sorry, something went wrong. Please try again later.');
+					}
+					else {
+						res.send(200, 'Saved Successfully');
+					}
+				});
+			}
+			else if (existingSubscriber) {
+				res.send(400, 'That Email Address is Already Subscribed!');
+			}
+		});
+	}
+	else
+		res.send(400, 'Please Enter an Email Address');
 });
+
+// app.get('*', function(req, res) {
+// 	res.sendfile('index.html');
+// });
