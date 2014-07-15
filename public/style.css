@@ -42,7 +42,6 @@ input[type="text"], input[type="email"] {
 	border: none;
 	line-height: 1.5;
 	padding: 2px 5px;
-	margin: 10px;
 }
 
 /* Reusable elements */
@@ -344,6 +343,9 @@ input[type="text"], input[type="email"] {
 
 #newsletter-intro form input[type="text"], #newsletter-intro form input[type="email"] {
 	width: 200px;
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 15px;
 }
 
 #newsletter-intro form label {

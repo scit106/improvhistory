@@ -12,7 +12,8 @@ $( document ).ready(function(){
 		$( "#" + openPerformance + "-expand").removeClass("hide");
 	}
 
-	$('#newsletter-submit').click(function(){
+	$('#newsletter-subscribe').submit(function(event){
+		event.preventDefault();
 		var subscriberInfo = $('form#newsletter-subscribe').serialize();
 		subscribe(subscriberInfo);
 		});
