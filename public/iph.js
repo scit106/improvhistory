@@ -13,13 +13,14 @@ $( document ).ready(function(){
 	}
 
 	$('#newsletter-submit').click(function(){
-		subscribe({email: 'banana@rama.com', firstName: 'Banana', lastName:'Man'});
+		var subscriberInfo = $('form#newsletter-subscribe').serialize();
+		subscribe(subscriberInfo);
 		});
 
 	function subscribe(input){
 		$.post(
 			'/subscribers'
-			, {email: 'apple@rama.com', firstName: 'Johnny', lastName:'Appleseed'}
+			, input
 			);
 	}
 
