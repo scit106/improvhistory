@@ -327,7 +327,7 @@ input[type="text"], input[type="email"] {
 	text-align: center;
 }
 
-#newsletter-intro {
+#newsletter-intro, #unsubscribe-intro {
 	margin-top: 75px;
 	padding-top: 60px;
 	background-image: url(images/citystreet.jpg);
@@ -335,7 +335,7 @@ input[type="text"], input[type="email"] {
 	text-align: center;
 }
 
-#newsletter-intro .content, #cast .content {
+#newsletter-intro .content, #cast .content, #unsubscribe-intro .content {
 	background-color: rgba(48,28,18, 0.75);
 	-webkit-box-shadow: 0px 0px 50px 50px rgba(48,28,18, 0.75);
 	-moz-box-shadow:    0px 0px 50px 50px rgba(48,28,18, 0.75);
@@ -343,12 +343,12 @@ input[type="text"], input[type="email"] {
 	display: inline-block;
 }
 
-#newsletter-intro form, #subscribe-success {
+#newsletter-intro form, #unsubscribe-intro form, #subscribe-success, #unsubscribe-success {
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
 
-#newsletter-intro form input[type="text"], #newsletter-intro form input[type="email"] {
+#newsletter-intro form input[type="text"], #newsletter-intro form input[type="email"], #unsubscribe-intro form input[type="email"] {
 	width: 200px;
 	display: block;
 	margin-top: 5px;

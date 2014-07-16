@@ -32,4 +32,24 @@ $( document ).ready(function(){
 			});
 	}
 
+	$('#newsletter-unsubscribe').submit(function(event){
+		event.preventDefault();
+		var subscriberInfo = $('form#newsletter-unsubscribe').serialize();
+		unsubscribe(subscriberInfo);
+		});
+
+	function unsubscribe(input){
+		$.ajax({
+			url: '/subscribers?' + input
+			, type: 'DELETE'
+			})
+			.done(function (data){
+				$('#newsletter-unsubscribe').addClass('hide');
+				$('#unsubscribe-success').removeClass('hide');
+			})
+			.error(function(err){
+				alert(err.responseText);
+			});
+	}
+
 });

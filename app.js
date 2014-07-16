@@ -34,6 +34,10 @@ app.get('/newsletter', function(req, res) {
 	res.sendfile('newsletter.html');
 });
 
+app.get('/unsubscribe', function(req, res) {
+	res.sendfile('unsubscribe.html');
+});
+
 // Really, we shouldnt use this - no one should be able to see all of our subscribers
 app.get('/subscribers', function(req, res) {
 	models.Subscriber.find({}, function(err, docs){
@@ -72,6 +76,27 @@ app.post('/subscribers', function(req, res) {
 			else {
 				res.send(500, 'Sorry, something went wrong. Please try again later.');
 			}
+		});
+	}
+	else
+		res.send(400, 'Please Enter an Email Address');
+});
+
+app.del('/subscribers', function (req, res) {
+	var unsubscribeEmail = req.query.email
+	if (unsubscribeEmail) {
+		models.Subscriber.findOne({email: unsubscribeEmail}, function (err, unsubscriber){
+			if (unsubscriber.email) {
+				models.Subscriber.remove({email: unsubscriber.email}, function (err){
+					if (!err) {
+						res.send(200, 'Removed Successfully');
+					}
+					else
+						res.send(500, 'Sorry, something went wrong. Please try again later.');
+				});
+			}
+			else
+				res.send(404, 'We could not find that subscriber. Please check your spelling and try again.')
 		});
 	}
 	else
