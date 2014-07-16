@@ -3,6 +3,7 @@ var express = require('express')
   , path = require('path')
   , mongo = require('mongodb')
   , mongoose = require('mongoose')
+  , config = require('./config.js')
   , models = require('./models.js');
 
 var app = express();
@@ -17,7 +18,7 @@ app.use(express.bodyParser()); // this will be deprecated soon, replace with
 // app.use(express.bodyParser.json());
 // app.use(express.bodyParser.urlencoded());
 
-mongoose.connect('mongodb://localhost/improv-history');
+mongoose.connect(config.mongoURL);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
