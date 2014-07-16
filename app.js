@@ -50,7 +50,7 @@ app.get('/subscribers', function(req, res) {
 app.post('/subscribers', function(req, res) {
 	if (req.body.email) {
 		models.Subscriber.findOne({email: req.body.email}, function (err, existingSubscriber){
-			if (err) { // Good, no subscriber exists
+			if (!existingSubscriber) { // Good, no subscriber exists
 				var newSubscriber = new models.Subscriber(req.body);
 				newSubscriber.save(function (err){
 					if (err) {
@@ -64,6 +64,13 @@ app.post('/subscribers', function(req, res) {
 			}
 			else if (existingSubscriber) {
 				res.send(400, 'That Email Address is Already Subscribed!');
+			}
+			else if (err) {
+				console.log(err);
+				res.send(500, 'Sorry, something went wrong. Please try again later.');
+			}
+			else {
+				res.send(500, 'Sorry, something went wrong. Please try again later.');
 			}
 		});
 	}
