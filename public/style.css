@@ -318,6 +318,9 @@ input[type="text"], input[type="email"] {
 }
 
 #cast {
+	background-image: url(images/wheels.jpg);
+	background-size: cover;
+	overflow: hidden;
 }
 
 #contact {
@@ -332,7 +335,7 @@ input[type="text"], input[type="email"] {
 	text-align: center;
 }
 
-#newsletter-intro .content {
+#newsletter-intro .content, #cast .content {
 	background-color: rgba(48,28,18, 0.75);
 	-webkit-box-shadow: 0px 0px 50px 50px rgba(48,28,18, 0.75);
 	-moz-box-shadow:    0px 0px 50px 50px rgba(48,28,18, 0.75);

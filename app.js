@@ -78,6 +78,6 @@ app.post('/subscribers', function(req, res) {
 		res.send(400, 'Please Enter an Email Address');
 });
 
-// app.get('*', function(req, res) {
-// 	res.sendfile('index.html');
-// });
+app.get('*', function(req, res) {
+	res.sendfile('index.html');
+});
