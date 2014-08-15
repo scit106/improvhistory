@@ -265,6 +265,8 @@ input[type="text"], input[type="email"] {
 
 #welcome {
 	margin-top: 75px;
+	padding-top: 90px;
+	padding-bottom: 90px;
 	background-image: url(images/GlobeBk.jpg);
 	background-position: 55% 90%; /* 45% 75% also looks good */
 }
