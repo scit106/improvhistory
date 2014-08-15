@@ -99,6 +99,10 @@ input[type="text"], input[type="email"] {
 	min-height: 200px;
 }
 
+.content {
+	padding: 60px 0px;
+}
+
 .nav {
 	position: fixed;
 	top: 0px;
@@ -247,7 +251,10 @@ input[type="text"], input[type="email"] {
 	background-color: rgb(126,78,58);
 }
 
+
+
 /* Specific Elements */
+
 #page-title {
 	margin-bottom: 20px;
 }
@@ -258,7 +265,6 @@ input[type="text"], input[type="email"] {
 
 #welcome {
 	margin-top: 75px;
-	padding-top: 60px;
 	background-image: url(images/GlobeBk.jpg);
 	background-position: 55% 90%; /* 45% 75% also looks good */
 }
@@ -407,8 +413,15 @@ input[type="text"], input[type="email"] {
 	}
 	#logo img{
 		max-width: 80%;
+		padding-top: 2%;
 	}
 	.nav {
 		padding: 1%;
+	}
+	#newsletter-intro, #cast {
+		background-image: none;
+	}
+	#show-dates .location-info td {
+		padding: 12px 15px;
 	}
 }
