@@ -33,6 +33,17 @@ a:hover {
 	color: white;
 }
 
+input[type="button"], input[type="submit"], button {
+	border: none;
+}
+
+input[type="text"], input[type="email"] {
+	border-radius: 5px;
+	border: none;
+	line-height: 1.5;
+	padding: 2px 5px;
+}
+
 /* Reusable elements */
 .sans-font {
 	font-family: 'Source Sans Pro', sans-serif;
@@ -49,6 +60,10 @@ a:hover {
 
 .italics {
 	font-style: italic;
+}
+
+.bold {
+	font-weight: 600;
 }
 
 .white {
@@ -126,6 +141,15 @@ a:hover {
 	max-width: 1200px;
 }
 
+.text-max-width {
+	max-width: 600px;
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .centered-content {
 	text-align: center;
 }
@@ -194,6 +218,8 @@ a:hover {
 	width: 75px;
 	height: 75px;
 	display: table;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .circle i {
@@ -218,7 +244,7 @@ a:hover {
 }
 
 .contact-link .circle:hover {
-	background-color: rgb(126,78,58)
+	background-color: rgb(126,78,58);
 }
 
 /* Specific Elements */
@@ -292,10 +318,55 @@ a:hover {
 }
 
 #cast {
+	background-image: url(images/wheels.jpg);
+	background-size: cover;
+	overflow: hidden;
 }
 
 #contact {
 	text-align: center;
+}
+
+#newsletter-intro, #unsubscribe-intro {
+	margin-top: 75px;
+	padding-top: 60px;
+	background-image: url(images/citystreet.jpg);
+	background-size: cover;
+	text-align: center;
+}
+
+#newsletter-intro .content, #cast .content, #unsubscribe-intro .content {
+	background-color: rgba(48,28,18, 0.75);
+	-webkit-box-shadow: 0px 0px 50px 50px rgba(48,28,18, 0.75);
+	-moz-box-shadow:    0px 0px 50px 50px rgba(48,28,18, 0.75);
+	box-shadow:         0px 0px 50px 50px rgba(48,28,18, 0.75);
+	display: inline-block;
+}
+
+#newsletter-intro form, #unsubscribe-intro form, #subscribe-success, #unsubscribe-success {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+#newsletter-intro form input[type="text"], #newsletter-intro form input[type="email"], #unsubscribe-intro form input[type="email"] {
+	width: 200px;
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+#newsletter-intro form label {
+	display: block;
+}
+
+#newsletter-intro input.off-white-background:hover {
+	background-color: rgb(228,212,202);
+	color: white;
+	cursor: pointer;
+}
+
+#subscribe-success {
+	min-height: 240px;
 }
 
 /* Responsive queries */
@@ -333,5 +404,11 @@ a:hover {
 	}
 	.show-location {
 		display: none;
+	}
+	#logo img{
+		max-width: 80%;
+	}
+	.nav {
+		padding: 1%;
 	}
 }
