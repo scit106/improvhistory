@@ -99,6 +99,10 @@ input[type="text"], input[type="email"] {
 	min-height: 200px;
 }
 
+.content {
+	padding: 60px 0px;
+}
+
 .nav {
 	position: fixed;
 	top: 0px;
@@ -247,7 +251,10 @@ input[type="text"], input[type="email"] {
 	background-color: rgb(126,78,58);
 }
 
+
+
 /* Specific Elements */
+
 #page-title {
 	margin-bottom: 20px;
 }
@@ -258,7 +265,8 @@ input[type="text"], input[type="email"] {
 
 #welcome {
 	margin-top: 75px;
-	padding-top: 60px;
+	padding-top: 90px;
+	padding-bottom: 90px;
 	background-image: url(images/GlobeBk.jpg);
 	background-position: 55% 90%; /* 45% 75% also looks good */
 }
@@ -275,13 +283,10 @@ input[type="text"], input[type="email"] {
 	line-height: 1;
 }
 
-#schedule {
-/*	background-color: #97b385;*/
-}
-
 #show-dates {
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0px auto;
+	width: 100%;
+	max-width: 1000px;
 }
 
 #show-dates th {
@@ -294,7 +299,7 @@ input[type="text"], input[type="email"] {
 }
 
 #show-dates td {
-	padding: 12px 50px;
+	padding: 1% 4%;
 	position: relative;
 }
 
@@ -371,6 +376,12 @@ input[type="text"], input[type="email"] {
 
 /* Responsive queries */
 
+@media (min-width: 968px){
+	#schedule {
+		padding: 60px;
+	}
+}
+
 @media (max-width: 967px){
 	#show-dates td {
 		padding-left: 15px;
@@ -407,8 +418,15 @@ input[type="text"], input[type="email"] {
 	}
 	#logo img{
 		max-width: 80%;
+		padding-top: 2%;
 	}
 	.nav {
 		padding: 1%;
+	}
+	#newsletter-intro, #cast {
+		background-image: none;
+	}
+	#show-dates .location-info td {
+		padding: 12px 15px;
 	}
 }
