@@ -272,10 +272,11 @@ input[type="text"], input[type="email"] {
 }
 
 #welcome h2 {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	margin-top: 0px;
 	padding-left: 15px;
 	line-height: 1;
+	text-align: right;
 }
 
 #welcome h1 {
