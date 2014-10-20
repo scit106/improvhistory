@@ -178,6 +178,7 @@ input[type="text"], input[type="email"] {
 	padding: 5px 10px;
 	border-radius: 5px;
 	text-align: center;
+	width: 100px;
 }
 
 .eventbrite {
@@ -302,6 +303,12 @@ input[type="text"], input[type="email"] {
 #show-dates td {
 	padding: 1% 4%;
 	position: relative;
+}
+
+#show-dates td.tickets {
+	padding: 1% 4%;
+	position: relative;
+	text-align: center;
 }
 
 #show-dates .location-info td{
