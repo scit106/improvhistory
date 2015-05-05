@@ -9,7 +9,8 @@
     "express": "3.x",
     "mongodb": "1.4.7",
     "mongoose": "3.8.12",
-    "supervisor": "*"
+    "supervisor": "*",
+    "jade": "1.9.2"
   },
   "engines": {
     "node": "0.10.25"

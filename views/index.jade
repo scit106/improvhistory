@@ -1,0 +1,28 @@
+extends ./main.jade
+block content
+	.container
+		.nav.off-white-background
+			.centered-max-width
+				.logo
+					img(src="images/IPHLogo.png")
+				ul.navlinks
+					li.navlink
+						a#about(href="#welcome")
+							| About
+					li.navlink
+						a#shows(href="#schedule")
+							| Shows
+					li.navlink
+						a#castlist(href="#cast")
+							| Cast
+					li.navlink
+						a#contactus(href="#contact")
+							| Contact
+		.section.brown-background#welcome
+			.paragraph
+				h1.serif-font.white
+					span.first-letter H
+					| istorically Funny.
+				h2.serif-font.white
+					span.first-letter H
+					| ysterically Inaccurate.

@@ -4,11 +4,14 @@ var express = require('express')
   , mongo = require('mongodb')
   , mongoose = require('mongoose')
   , config = require('./config.js')
-  , models = require('./models.js');
+  , models = require('./models.js')
+  , jade = require('jade');
 
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
+app.set('views', './views');
+app.set('view engine', 'jade')
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
@@ -28,7 +31,7 @@ db.once('open', function callback () {
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
-	res.sendfile('index.html');
+	res.render('index');
 });
 
 app.get('/newsletter', function(req, res) {
