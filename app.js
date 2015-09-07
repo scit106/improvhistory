@@ -35,11 +35,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/newsletter', function(req, res) {
-	res.sendfile('newsletter.html');
+	res.render('newsletter');
 });
 
 app.get('/unsubscribe', function(req, res) {
-	res.sendfile('unsubscribe.html');
+	res.render('unsubscribe');
 });
 
 // Really, we shouldnt use this - no one should be able to see all of our subscribers
@@ -74,7 +74,6 @@ app.post('/subscribers', function(req, res) {
 				res.send(400, 'That Email Address is Already Subscribed!');
 			}
 			else if (err) {
-				console.log(err);
 				res.send(500, 'Sorry, something went wrong. Please try again later.');
 			}
 			else {
@@ -108,5 +107,5 @@ app.del('/subscribers', function (req, res) {
 });
 
 app.get('*', function(req, res) {
-	res.sendfile('index.html');
+	res.render('index');
 });
