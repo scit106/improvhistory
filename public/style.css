@@ -264,6 +264,12 @@ input[type="text"], input[type="email"] {
 	float: left;
 }
 
+#logo img {
+	max-width: 400px;
+	width: auto;
+	max-height: 75px;
+}
+
 #welcome {
 	margin-top: 75px;
 	padding-top: 90px;

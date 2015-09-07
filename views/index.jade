@@ -3,8 +3,8 @@ block content
 	.container
 		.nav.off-white-background
 			.centered-max-width
-				.logo
-					img(src="images/IPHLogo.png")
+				#logo
+					img(src="images/improv-hist-long.png")
 				ul.navlinks
 					li.navlink
 						a#about(href="#welcome")
@@ -26,3 +26,117 @@ block content
 				h2.serif-font.white
 					span.first-letter H
 					| ysterically Inaccurate.
+				p.sans-font.white
+					| Improvised History is a fully improvised comedy show which invites the audience to collaborate on a new chapter in a US history textbook. Famous (and not-so-famous) figures are brought back to life in front of your eyes. It all begins when the audience picks a page from a real US history textbook, then hilarity ensues as the improvisers rewrite that chapter in history with their own (mis)interpretations. Most performances are in the Boston area, but the cast has been known to hitch up the wagons and explore new lands! We also do private events, which are great for making history fun and accessible! Be sure to
+					a(href='#contact')
+						| get in touch
+					|  if you would like to know where our manifest destiny takes us next.
+		.section.off-white-background#schedule
+			h2.serif-font.section-header
+				span.first-letter S
+				| how
+				span.first-letter S
+				| chedule
+			table.sans-font#show-dates
+				tr
+					th.show-date DATE
+					th.show-time TIME
+					th.show-location LOCATION
+					th.tickets TICKETS
+				tr#riot-halloween
+					td.show-date Saturday, October 31st, 2015
+					td.show-time 8:00 PM
+					td.show-location The Riot Theater
+					td.tickets Coming Soon
+				tr.hide.location-info.lighter-off-white-background#riot-halloween-expand
+					td(colspan="4")
+						h3.venue-name The Riot Theater
+						h4.show-name Improvised History: Salem Special
+						a.address(href="https://www.google.com/maps/place/146+South+St,+Jamaica+Plain,+MA+02130/@42.3049835,-71.1145205,17z/data=!3m1!4b1!4m2!3m1!1s0x89e37969fd10a495:0xbea2d0255b47d04e" target="_blank")
+							p 146A South Street
+							p Jamaica Plain, MA 02130
+						p.mobile-only 8:00 PM
+						p.show-description.
+							A special for Halloween, Improvised History 
+							dives in to the Salem Witch trials
+							and other spooky stories from our past. Join us
+							as guest story tellers provide the inspiration
+							for this historical halloween themed show!
+		.section.brown-background#cast
+			.content
+				h2.section-header.serif-font.white
+					span.first-letter M
+					| eet the 
+					span.first-letter C
+					| ast
+				.centered-max-width.centered-content
+					.cast-member
+						#David.cast-member-photo
+							img(src='images/David.jpg')
+						h4.cast-name.white.sans-font David Fouhy
+					.cast-member
+						#jackie.cast-member-photo
+							img(src='images/Jackie.jpg')
+						h4.cast-name.white.sans-font Jackie Presedo
+					.cast-member
+						#lauren.cast-member-photo
+							img(src='images/Lauren.jpg')
+						h4.cast-name.white.sans-font Lauren Magnuson
+					.cast-member
+						#scott.cast-member-photo
+							img(src='images/scott.jpg')
+						h4.cast-name.white.sans-font Scott Istvan
+					.cast-member
+						#michael.cast-member-photo
+							img(src='images/michael.jpg')
+						h4.cast-name.white.sans-font Michael Milton
+					.cast-member
+						#britt.cast-member-photo
+							img(src='images/britt.jpg')
+						h4.cast-name.white.sans-font Britt Mitchell
+					.cast-member
+						#phil.cast-member-photo
+							img(src='images/Phil.jpg')
+						h4.cast-name.white.sans-font Phil Jaffe
+					.cast-member
+						#rachel.cast-member-photo
+							img(src='images/Rachel.jpg')
+						h4.cast-name.white.sans-font Rachel Heafield
+					.cast-member
+						#ryan.cast-member-photo
+							img(src='images/Ryan.jpg')
+						h4.cast-name.white.sans-font Ryan Pierannunzi
+					.cast-member
+						#sarah.cast-member-photo
+							img(src='images/Sarah.jpg')
+						h4.cast-name.white.sans-font Sarah Jacobs
+		.section.off-white-background#contact
+			h2.section-header.serif-font
+				span.first-letter G
+				| et In
+				span.first-letter T
+				| ouch
+			a.contact-link#email-link(href="mailto:improvisedhistory@gmail.com")
+				.contact-block
+					.circle.brown-background
+						i.fa.fa-envelope.white
+					.contact-text.sans-font EMAIL
+			a.contact-link#facebook-link(href="https://www.facebook.com/improvhistory")
+				.contact-block
+					.circle.brown-background
+						i.fa.fa-facebook.white
+					.contact-text.sans-font FACEBOOK
+			a.contact-link#twitter-link(href="https://twitter.com/improvhistory")
+				.contact-block
+					.circle.brown-background
+						i.fa.fa-twitter.white
+					.contact-text.sans-font TWITTER
+			a.contact-link#newsletter-link(href="/newsletter")
+				.contact-block
+					.circle.brown-background
+						i.fa.fa-paper-plane.white 
+					.contact-text.sans-font NEWSLETTER
+
+
+
+
