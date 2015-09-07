@@ -1,0 +1,65 @@
+extends ./main.jade
+block content
+	.container
+		.nav.off-white-background
+			.centered-max-width
+				#logo
+					img(src="images/improv-hist-long.png")
+				ul.navlinks
+					li.navlink
+						a#about(href="/#welcome")
+							| About
+					li.navlink
+						a#shows(href="/#schedule")
+							| Shows
+					li.navlink
+						a#castlist(href="/#cast")
+							| Cast
+					li.navlink
+						a#contactus(href="/#contact")
+							| Contact
+		#unsubscribe-intro.section.brown-background
+			.content
+				h2.serif-font.section-header.white
+					span.first-letter S
+					| orry to see you go!
+				p.sans-font.white.center.centered-content.text-max-width
+					| Just enter in your email address below to be removed from our mailing list. If any further problems arise, please contact us via the email link at the bottom of the page. Be sure to keep in touch via Facebook and Twitter!
+				form#newsletter-unsubscribe.center.centered-content
+					label.serif-font.white
+						| Your Email:
+						input.sans-font.center(type='email', name='email', placeholder='*Required', required='')
+					input#newsletter-unsub.ticket-link.brown.sans-font.off-white-background(type='submit', value='Unsubscribe')
+				#unsubscribe-success.hide.centered-content.center
+					h2.serif-font.white
+						span.first-letter T
+						| hank 
+						span.first-letter Y
+						| ou!
+					p.white.sans-font.text-max-width
+						| You have been removed from our newsletter list. You will no longer receive our monthly newsletter. If you ever want to resubscribe, 
+						a(href='/newsletter') Click Here
+						| !
+
+		#contact.section.off-white-background
+			h2.section-header.serif-font
+				span.first-letter G
+				| et In 
+				span.first-letter T
+				| ouch
+			a#email-link.contact-link(href='mailto:improvisedhistory@gmail.com')
+				.contact-block
+					.circle.brown-background
+						i.fa.fa-envelope.white
+					.contact-text.sans-font EMAIL
+			a#facebook-link.contact-link(href='https://www.facebook.com/improvhistory')
+				.contact-block
+					.circle.brown-background
+						i.fa.fa-facebook.white
+					.contact-text.sans-font FACEBOOK
+			a#twitter-link.contact-link(href='https://twitter.com/improvhistory')
+				.contact-block
+					.circle.brown-background
+						i.fa.fa-twitter.white
+					.contact-text.sans-font TWITTER
+
