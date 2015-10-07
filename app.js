@@ -5,6 +5,8 @@ var express = require('express')
   , mongoose = require('mongoose')
   , config = require('./config.js')
   , models = require('./models.js')
+  , shows = require('./shows.js')
+  , seeds = require('./seeds.js')
   , jade = require('jade');
 
 var app = express();
@@ -24,14 +26,27 @@ app.use(express.bodyParser()); // this will be deprecated soon, replace with
 mongoose.connect(config.mongoURL);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-  console.log('Opened mongoose connection');
+db.once('open', function() {
+	seeds.seedVenues();
+	console.log('Opened mongoose connection');
 });
 
 app.use(express.static(__dirname + '/public'));
 
+
 app.get('/', function(req, res) {
-	res.render('index');
+	res.render('index', {shows: shows});
+});
+
+app.get('/venues', function(req, res) {
+	models.Venue.find(function(err, venues) {
+		if (!err && venues) {
+			res.send(venues);
+		}
+		else {
+			res.send(err);
+		}
+	});
 });
 
 app.get('/newsletter', function(req, res) {
@@ -85,7 +100,7 @@ app.post('/subscribers', function(req, res) {
 		res.send(400, 'Please Enter an Email Address');
 });
 
-app.del('/subscribers', function (req, res) {
+app.delete('/subscribers', function (req, res) {
 	var unsubscribeEmail = req.query.email
 	if (unsubscribeEmail) {
 		models.Subscriber.findOne({email: unsubscribeEmail}, function (err, unsubscriber){

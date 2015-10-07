@@ -43,40 +43,25 @@ block content
 					th.show-time TIME
 					th.show-location LOCATION
 					th.tickets TICKETS
-				tr#riot-oct
-					td.show-date Friday, October 23rd, 2015
-					td.show-time 10:00 PM
-					td.show-location The Riot Theater
-					td.tickets Coming Soon
-				tr.hide.location-info.lighter-off-white-background#riot-oct-expand
-					td(colspan="4")
-						h3.venue-name The Riot Theater
-						h4.show-name Improvised History: Revolution!
-						a.address(href="https://www.google.com/maps/place/146+South+St,+Jamaica+Plain,+MA+02130/@42.3049835,-71.1145205,17z/data=!3m1!4b1!4m2!3m1!1s0x89e37969fd10a495:0xbea2d0255b47d04e" target="_blank")
-							p 146A South Street
-							p Jamaica Plain, MA 02130
-						p.mobile-only 8:00 PM
-						p.show-description.
-							Joined by our friend and local history enthusiast Emily "Red" Kovatch, we will hear exciting stories from the early years of our country and bring them to life before your eyes!
-				tr#riot-halloween
-					td.show-date Saturday, October 31st, 2015
-					td.show-time 8:00 PM
-					td.show-location The Riot Theater
-					td.tickets Coming Soon
-				tr.hide.location-info.lighter-off-white-background#riot-halloween-expand
-					td(colspan="4")
-						h3.venue-name The Riot Theater
-						h4.show-name Improvised History: Salem Special
-						a.address(href="https://www.google.com/maps/place/146+South+St,+Jamaica+Plain,+MA+02130/@42.3049835,-71.1145205,17z/data=!3m1!4b1!4m2!3m1!1s0x89e37969fd10a495:0xbea2d0255b47d04e" target="_blank")
-							p 146A South Street
-							p Jamaica Plain, MA 02130
-						p.mobile-only 8:00 PM
-						p.show-description.
-							A special for Halloween, Improvised History 
-							dives in to the Salem Witch trials
-							and other spooky stories from our past. Join us
-							as guest story tellers provide the inspiration
-							for this historical halloween themed show!
+				//- each show in shows
+				//- 	tr(id=show.slug)
+				//- 		td.show-date= show.date
+				//- 		td.show-time= show.time
+				//- 		td.show-location show.location
+				//- 		if show.ticketLink
+				//- 			td.tickets
+				//- 				a.ticket-link(href=ticketLink)
+				//- 		else
+				//- 			td.tickets Coming Soon
+				//- 	tr.hide.location-info.lighter-off-white-background(id=show.slug + '-expand' )
+				//- 		td(colspan="4")
+				//- 			h3.venue-name show.location
+				//- 			h4.show-name show.showName
+				//- 			a.address(href=show.addressLink target="_blank")
+				//- 				p= show.addressStreet
+				//- 				p= show.addressCity
+				//- 			p.mobile-only= show.time
+				//- 			p.show-description= show.description
 		.section.brown-background#cast
 			.content
 				h2.section-header.serif-font.white
