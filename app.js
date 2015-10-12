@@ -116,6 +116,41 @@ app.get('/shows/edit', function(req, res){
 	});
 });
 
+app.post('/shows/edit', function(req, res) {
+	var slug;
+	if (slug = req.body.slug){
+		models.Show.findOne({slug: slug}, function(err, existingShow) {
+			if (existingShow) {
+				existingShow.update({slug: slug}, req.body, function(err){
+					if (err) {
+						res.send(err);
+					}
+					else {
+						res.send(200);
+					}
+				});
+			}
+			else if (err) {
+				console.log('Error creating or updating a show');
+				console.log(err);
+				res.send(err);
+			}
+			else {
+				models.Show.create(req.body, function(err, newShow) {
+					if (newShow && !err) {
+						res.send(200);
+					}
+					else {
+						console.log('Error creating new show');
+						console.log(err);
+						res.send(err);
+					}
+				});
+			}
+		});
+	}
+});
+
 app.get('/newsletter', function(req, res) {
 	res.render('newsletter');
 });

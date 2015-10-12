@@ -72,4 +72,25 @@ $( document ).ready(function(){
 			});
 	}
 
+	$('#show-update').submit(function(event){
+		event.preventDefault();
+		var showInfo = $('form#show-update').serialize();
+		updateShow(showInfo);
+		});
+
+	function updateShow(input){
+		$.post(
+			'/shows/edit'
+			, input
+			)
+			.done(function (data){
+				$('#show-update').addClass('hide');
+				$('#show-success').removeClass('hide');
+			})
+			.error(function(err){
+				alert(err.responseText);
+			});
+	}
+
+
 });
