@@ -1,0 +1,41 @@
+extends ./main.jade
+block content
+	.container
+		include ./nav.jade
+	#venue-intro.section.brown-background.form-page-intro
+		.content
+			h2.serif-font.section-header.white
+				span.first-letter C
+				| reate a new 
+				span.first-letter V
+				| enue
+			p.sans-font.white.center.centered-content.text-max-width
+				|  Or update an existing one by using the same short name
+			form#venue-update.center.centered-content
+				label.serif-font.white
+					| Short Name
+					input.sans-font.center(type='text', name='shortName', placeholder='*Required', required=true)
+				label.serif-font.white
+					| Display Name
+					input.sans-font.center(type='text', name='displayName')
+				label.serif-font.white
+					| Address Link
+					input.sans-font.center(type='text', name='addressLink' placeholder='E.g., http://maps.google.com/some-place')
+				label.serif-font.white
+					| Address Line One
+					input.sans-font.center(type='text', name='addressStreet' placeholder='E.g., 123 Main St')
+				label.serif-font.white
+					| Address Line Two
+					input.sans-font.center(type='text', name='addressCity' placeholder='E.g., Cambridge, MA')
+				input#venue-submit.ticket-link.brown.sans-font.off-white-background(type='submit', value='Save!')
+			#venue-success.hide.centered-content.center
+				h2.serif-font.white
+					span.first-letter V
+						| enue 
+					span.first-letter S
+						| aved
+				p.white.sans-font.text-max-width
+					| This venue has been saved successfully.
+					a(href='/') Click Here
+					|  to return to the home page.
+	include ./contact.jade

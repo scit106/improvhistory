@@ -1,4 +1,5 @@
 var mongoose = require('mongoose')
+	, _ = require('underscore')
 	, models = require('./models.js');
 
 
@@ -34,15 +35,12 @@ var shows = [
 var seedShowsForVenue = function seedShowsForVenue(currentVenue) {
 	console.log('seeding shows')
 	models.Venue.findOne(currentVenue, function(err, venue){
-		var showToCreate = shows[0]
-		showToCreate.venue = venue
-		console.log(showToCreate)
-		models.Show.update(showToCreate, showToCreate, {upsert: true}, function(err, show){
+		var showsToCreate = _.map(shows, function(currentShow, index, allShows){
+			currentShow.venue = venue
+		});
+		models.Show.update(showsToCreate, showsToCreate, {upsert: true}, function(err, show){
 			if (err) {
 				console.log(err);
-			}
-			else {
-				console.log(show)
 			}
 		});
 	});

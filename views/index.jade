@@ -1,23 +1,7 @@
 extends ./main.jade
 block content
 	.container
-		.nav.off-white-background
-			.centered-max-width
-				#logo
-					img(src="images/improv-hist-long.png")
-				ul.navlinks
-					li.navlink
-						a#about(href="#welcome")
-							| About
-					li.navlink
-						a#shows(href="#schedule")
-							| Shows
-					li.navlink
-						a#castlist(href="#cast")
-							| Cast
-					li.navlink
-						a#contactus(href="#contact")
-							| Contact
+		include ./nav.jade
 		.section.brown-background#welcome
 			.paragraph
 				h1.serif-font.white
@@ -44,31 +28,42 @@ block content
 					th.show-location LOCATION
 					th.tickets TICKETS
 				if showError
-					td(colspan="4")
-						h3.red Problem Loading Shows. Please try again later
-						p.sans-font If the problem persists, please email us with the link at the bottom.
-				each show in shows
-					tr(id=show.slug)
-						td.show-date= show.date
-						td.show-time= show.time
-						td.show-location
-							if show.venue
-								= show.venue.displayName
-						if show.ticketLink
-							td.tickets
-								a.ticket-link(href=ticketLink)
-						else
-							td.tickets Coming Soon
-					tr.hide.location-info.lighter-off-white-background(id=show.slug + '-expand' )
-						td(colspan="4")
-							h3.venue-name= show.venue.displayName
-							if show.venue
-								h4.show-name= show.showName
-								a.address(href=show.venue.addressLink target="_blank")
-									p= show.venue.addressStreet
-									p= show.venue.addressCity
-							p.mobile-only= show.time
-							p.show-description= show.showDescription
+					tr
+						td.centered-content(colspan="4")
+							h3 Problem Loading Shows. Please try again later.
+							p.sans-font 
+								| If the problem persists, please 
+								a(href="mailto:improvisedhistory@gmail.com") email us.
+				if shows
+					each show in shows
+						tr(id=show.slug)
+							td.show-date= show.date
+							td.show-time= show.time
+							td.show-location
+								if show.venue
+									= show.venue.displayName
+							if show.ticketLink
+								td.tickets
+									a.ticket-link(href=ticketLink)
+							else
+								td.tickets Coming Soon
+						tr.hide.location-info.lighter-off-white-background(id=show.slug + '-expand' )
+							td(colspan="4")
+								h3.venue-name= show.venue.displayName
+								if show.venue
+									h4.show-name= show.showName
+									a.address(href=show.venue.addressLink target="_blank")
+										p= show.venue.addressStreet
+										p= show.venue.addressCity
+								p.mobile-only= show.time
+								p.show-description= show.showDescription
+					else
+						tr
+							td.centered-content(colspan="4")
+								h3.black.sans-font No Upcoming Shows
+								p.black.sans-font 
+									| Want us to perform for you? 
+									a(href="mailto:improvisedhistory@gmail.com") Send us an email!
 		.section.brown-background#cast
 			.content
 				h2.section-header.serif-font.white
@@ -113,32 +108,7 @@ block content
 						#sarah.cast-member-photo
 							img(src='images/Sarah.jpg')
 						h4.cast-name.white.sans-font Sarah Jacobs
-		.section.off-white-background#contact
-			h2.section-header.serif-font
-				span.first-letter G
-				| et In 
-				span.first-letter T
-				| ouch
-			a.contact-link#email-link(href="mailto:improvisedhistory@gmail.com")
-				.contact-block
-					.circle.brown-background
-						i.fa.fa-envelope.white
-					.contact-text.sans-font EMAIL
-			a.contact-link#facebook-link(href="https://www.facebook.com/improvhistory")
-				.contact-block
-					.circle.brown-background
-						i.fa.fa-facebook.white
-					.contact-text.sans-font FACEBOOK
-			a.contact-link#twitter-link(href="https://twitter.com/improvhistory")
-				.contact-block
-					.circle.brown-background
-						i.fa.fa-twitter.white
-					.contact-text.sans-font TWITTER
-			a.contact-link#newsletter-link(href="/newsletter")
-				.contact-block
-					.circle.brown-background
-						i.fa.fa-paper-plane.white 
-					.contact-text.sans-font NEWSLETTER
+		include ./contact.jade
 
 
 

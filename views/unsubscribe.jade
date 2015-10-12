@@ -1,24 +1,8 @@
 extends ./main.jade
 block content
 	.container
-		.nav.off-white-background
-			.centered-max-width
-				#logo
-					img(src="images/improv-hist-long.png")
-				ul.navlinks
-					li.navlink
-						a#about(href="/#welcome")
-							| About
-					li.navlink
-						a#shows(href="/#schedule")
-							| Shows
-					li.navlink
-						a#castlist(href="/#cast")
-							| Cast
-					li.navlink
-						a#contactus(href="/#contact")
-							| Contact
-		#unsubscribe-intro.section.brown-background
+		include ./nav.jade
+		#unsubscribe-intro.section.brown-background.form-page-intro
 			.content
 				h2.serif-font.section-header.white
 					span.first-letter S
@@ -41,25 +25,5 @@ block content
 						a(href='/newsletter') Click Here
 						| !
 
-		#contact.section.off-white-background
-			h2.section-header.serif-font
-				span.first-letter G
-				| et In 
-				span.first-letter T
-				| ouch
-			a#email-link.contact-link(href='mailto:improvisedhistory@gmail.com')
-				.contact-block
-					.circle.brown-background
-						i.fa.fa-envelope.white
-					.contact-text.sans-font EMAIL
-			a#facebook-link.contact-link(href='https://www.facebook.com/improvhistory')
-				.contact-block
-					.circle.brown-background
-						i.fa.fa-facebook.white
-					.contact-text.sans-font FACEBOOK
-			a#twitter-link.contact-link(href='https://twitter.com/improvhistory')
-				.contact-block
-					.circle.brown-background
-						i.fa.fa-twitter.white
-					.contact-text.sans-font TWITTER
+		include ./contact.jade
 

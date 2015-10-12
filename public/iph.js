@@ -52,4 +52,24 @@ $( document ).ready(function(){
 			});
 	}
 
+	$('#venue-update').submit(function(event){
+		event.preventDefault();
+		var venueInfo = $('form#venue-update').serialize();
+		updateVenue(venueInfo);
+		});
+
+	function updateVenue(input){
+		$.post(
+			'/venues/edit'
+			, input
+			)
+			.done(function (data){
+				$('#venue-update').addClass('hide');
+				$('#venue-success').removeClass('hide');
+			})
+			.error(function(err){
+				alert(err.responseText);
+			});
+	}
+
 });

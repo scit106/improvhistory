@@ -3,6 +3,7 @@ var express = require('express')
   , path = require('path')
   , mongo = require('mongodb')
   , mongoose = require('mongoose')
+  , _ = require('underscore')
   , config = require('./config.js')
   , models = require('./models.js')
   // , shows = require('./shows.js')
@@ -27,7 +28,7 @@ mongoose.connect(config.mongoURL);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-	seeds.seedVenuesAndShows();
+	// seeds.seedVenuesAndShows();
 	console.log('Opened mongoose connection');
 });
 
@@ -41,7 +42,6 @@ app.get('/', function(req, res) {
 			res.render('index', {showError: err});
 		}
 		else {
-
 			res.render('index', {shows: shows});
 		}
 	});
@@ -56,6 +56,45 @@ app.get('/venues', function(req, res) {
 			res.send(err);
 		}
 	});
+});
+
+app.get('/venues/edit', function(req, res){
+	res.render('venue');
+})
+
+app.post('/venues/edit', function(req, res) {
+	var shortName;
+	if (shortName = req.body.shortName){
+		models.Venue.findOne({shortName: shortName}, function(err, existingVenue) {
+			if (existingVenue) {
+				existingVenue.update({shortName: shortName}, req.body, function(err){
+					if (err) {
+						res.send(err);
+					}
+					else {
+						res.send(200);
+					}
+				});
+			}
+			else if (err) {
+				console.log('Error creating or updating a venue');
+				console.log(err);
+				res.send(err);
+			}
+			else {
+				models.Venue.create(req.body, function(err, newVenue) {
+					if (newVenue && !err) {
+						res.send(200);
+					}
+					else {
+						console.log('Error creating new venue');
+						console.log(err);
+						res.send(err);
+					}
+				});
+			}
+		});
+	}
 });
 
 app.get('/shows', function(req, res) {
