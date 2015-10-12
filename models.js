@@ -20,7 +20,7 @@ var showSchema = new mongoose.Schema({
 	slug: {type: String},
 	date: {type: Date},
 	time: {type: String},
-	location: {type: mongoose.Schema.Types.ObjectId, ref: 'Venue'},
+	venue: {type: mongoose.Schema.Types.ObjectId, ref: 'Venue'},
 	ticketLink: {type: String},
 	showName: {type: String},
 	showDescription: {type: String}

@@ -43,25 +43,32 @@ block content
 					th.show-time TIME
 					th.show-location LOCATION
 					th.tickets TICKETS
-				//- each show in shows
-				//- 	tr(id=show.slug)
-				//- 		td.show-date= show.date
-				//- 		td.show-time= show.time
-				//- 		td.show-location show.location
-				//- 		if show.ticketLink
-				//- 			td.tickets
-				//- 				a.ticket-link(href=ticketLink)
-				//- 		else
-				//- 			td.tickets Coming Soon
-				//- 	tr.hide.location-info.lighter-off-white-background(id=show.slug + '-expand' )
-				//- 		td(colspan="4")
-				//- 			h3.venue-name show.location
-				//- 			h4.show-name show.showName
-				//- 			a.address(href=show.addressLink target="_blank")
-				//- 				p= show.addressStreet
-				//- 				p= show.addressCity
-				//- 			p.mobile-only= show.time
-				//- 			p.show-description= show.description
+				if showError
+					td(colspan="4")
+						h3.red Problem Loading Shows. Please try again later
+						p.sans-font If the problem persists, please email us with the link at the bottom.
+				each show in shows
+					tr(id=show.slug)
+						td.show-date= show.date
+						td.show-time= show.time
+						td.show-location
+							if show.venue
+								= show.venue.displayName
+						if show.ticketLink
+							td.tickets
+								a.ticket-link(href=ticketLink)
+						else
+							td.tickets Coming Soon
+					tr.hide.location-info.lighter-off-white-background(id=show.slug + '-expand' )
+						td(colspan="4")
+							h3.venue-name= show.venue.displayName
+							if show.venue
+								h4.show-name= show.showName
+								a.address(href=show.addressLink target="_blank")
+									p= show.addressStreet
+									p= show.addressCity
+							p.mobile-only= show.time
+							p.show-description= show.showDescription
 		.section.brown-background#cast
 			.content
 				h2.section-header.serif-font.white

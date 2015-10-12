@@ -5,7 +5,7 @@ var express = require('express')
   , mongoose = require('mongoose')
   , config = require('./config.js')
   , models = require('./models.js')
-  , shows = require('./shows.js')
+  // , shows = require('./shows.js')
   , seeds = require('./seeds.js')
   , jade = require('jade');
 
@@ -27,8 +27,7 @@ mongoose.connect(config.mongoURL);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-	seeds.seedVenues();
-	seeds.seedShows();
+	seeds.seedVenuesAndShows();
 	console.log('Opened mongoose connection');
 });
 
@@ -36,7 +35,15 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function(req, res) {
-	res.render('index', {shows: shows});
+	models.Show.find(function(err, shows){
+		if (err) {
+			console.log('render error');
+			res.render('index', {showError: err});
+		}
+		else {
+			res.render('index', {shows: shows});
+		}
+	});
 });
 
 app.get('/venues', function(req, res) {
