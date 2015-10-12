@@ -1,0 +1,44 @@
+extends ./main.jade
+block content
+	.container
+		include ./nav.jade
+	#show-intro.section.brown-background.form-page-intro
+		.content
+			h2.serif-font.section-header.white
+				span.first-letter C
+				| reate a new 
+				span.first-letter S
+				| how
+			p.sans-font.white.center.centered-content.text-max-width
+				|  Or update an existing one by using the same slug
+			form#show-update.center.centered-content
+				label.serif-font.white
+					| Slug
+					input.sans-font.center(type='text', name='slug', placeholder='*Required', required=true)
+				label.serif-font.white
+					| Date
+					input.sans-font.center(type='text', name='date' placeholder='YYYY-MM-DD')
+				label.serif-font.white
+					| Time
+					input.sans-font.center(type='text', name='time' placeholder='HH:MM PM')
+				label.serif-font.white
+					| Ticket Link
+					input.sans-font.center(type='text', name='ticketLink' placeholder='E.g., http://eventbrite.com/my-event')
+				label.serif-font.white
+					| Show Name
+					input.sans-font.center(type='text', name='showName')
+				label.serif-font.white
+					| Show Description
+					textarea.sans-font.center(name='showDescription')
+				input#show-submit.ticket-link.brown.sans-font.off-white-background(type='submit', value='Save!')
+			#show-success.hide.centered-content.center.form-success
+				h2.serif-font.white
+					span.first-letter S
+						| how
+					span.first-letter S
+						| aved
+				p.white.sans-font.text-max-width
+					| This show has been saved successfully.
+					a(href='/') Click Here
+					|  to return to the home page.
+	include ./contact.jade

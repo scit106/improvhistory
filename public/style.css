@@ -362,12 +362,12 @@ input[type="text"], input[type="email"] {
 	display: inline-block;
 }
 
-.form-page-intro form, #subscribe-success, #unsubscribe-success {
+.form-page-intro form, .form-success {
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
 
-.form-page-intro form input[type="text"], .form-page-intro form input[type="email"] {
+.form-page-intro form input[type="text"], .form-page-intro form input[type="email"], .form-page-intro form textarea {
 	width: 200px;
 	display: block;
 	margin-top: 5px;

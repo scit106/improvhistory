@@ -60,7 +60,7 @@ app.get('/venues', function(req, res) {
 
 app.get('/venues/edit', function(req, res){
 	res.render('venue');
-})
+});
 
 app.post('/venues/edit', function(req, res) {
 	var shortName;
@@ -106,6 +106,10 @@ app.get('/shows', function(req, res) {
 			res.send(err);
 		}
 	});
+});
+
+app.get('/shows/edit', function(req, res){
+	res.render('show');
 });
 
 app.get('/newsletter', function(req, res) {
