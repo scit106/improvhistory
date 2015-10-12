@@ -32,8 +32,6 @@ var shows = [
 		addressCity: venues.riot.addressCity,
 		showDescription: 'Joined by our friend and local history enthusiast Emily "Red" Kovatch, we will hear exciting stories from the early years of our country and bring them to life before your eyes!'
 	},
-	
-
 ]
 
 module.exports = shows

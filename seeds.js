@@ -9,6 +9,33 @@ var venues = [{
 	addressStreet: '146A South Street',
 	addressCity: 'Jamaica Plain, MA 02130'
 }];
+
+var shows = [
+	{
+		slug: 'riot-oct',
+		date: '2015-10-23',
+		time: '10:00 PM',
+		// location: venues.riot.displayName,
+		ticketLink: null,
+		showName: 'Improvised History: Revolution!',
+		// addressLink: venues.riot.addressLink,
+		// addressStreet: venues.riot.addressStreet,
+		// addressCity: venues.riot.addressCity,
+		showDescription: 'Joined by our friend and local history enthusiast Emily "Red" Kovatch, we will hear exciting stories from the early years of our country and bring them to life before your eyes!'
+	},
+	{
+		slug: 'riot-halloween',
+		date: '2015-10-31',
+		time: '8:00 PM',
+		// location: venues.riot.displayName,
+		ticketLink: null,
+		showName: 'Improvised History: Salem Special',
+		// addressLink: venues.riot.addressLink,
+		// addressStreet: venues.riot.addressStreet,
+		// addressCity: venues.riot.addressCity,
+		showDescription: 'Joined by our friend and local history enthusiast Emily "Red" Kovatch, we will hear exciting stories from the early years of our country and bring them to life before your eyes!'
+	},
+]
 	
 exports.seedVenues = function seedVenues() {
 	console.log('seeding venues')
@@ -18,4 +45,18 @@ exports.seedVenues = function seedVenues() {
 		}
 	}); // I should eventually put this in a loop
 };
+
+exports.seedShows = function seedShows() {
+	console.log('seeding shows')
+	models.Show.update(shows[0], shows[0], {upsert: true}, function(err, show){
+		if (err) {
+			console.log(err);
+		}
+	}); // I should eventually put this in a loop	
+	models.Show.update(shows[1], shows[1], {upsert: true}, function(err, show){
+	if (err) {
+		console.log(err);
+		}
+	}); // I should eventually put this in a loop
+}
 

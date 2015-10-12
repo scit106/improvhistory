@@ -28,6 +28,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 	seeds.seedVenues();
+	seeds.seedShows();
 	console.log('Opened mongoose connection');
 });
 
@@ -42,6 +43,17 @@ app.get('/venues', function(req, res) {
 	models.Venue.find(function(err, venues) {
 		if (!err && venues) {
 			res.send(venues);
+		}
+		else {
+			res.send(err);
+		}
+	});
+});
+
+app.get('/shows', function(req, res) {
+	models.Show.find(function(err, shows) {
+		if (!err && shows) {
+			res.send(shows);
 		}
 		else {
 			res.send(err);

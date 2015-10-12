@@ -16,10 +16,21 @@ var venueSchema = new mongoose.Schema({
 	, addressCity: {type: String}
 });
 
+var showSchema = new mongoose.Schema({
+	slug: {type: String},
+	date: {type: Date},
+	time: {type: String},
+	location: {type: mongoose.Schema.Types.ObjectId, ref: 'Venue'},
+	ticketLink: {type: String},
+	showName: {type: String},
+	showDescription: {type: String}
+});
+
 
 //Models
 var Subscriber = mongoose.model('Subscriber', subscriberSchema);
 var Venue = mongoose.model('Venue', venueSchema);
+var Show = mongoose.model('Show', showSchema);
 
 // Exports
 module.exports = {
@@ -27,4 +38,6 @@ module.exports = {
 	, Subscriber: Subscriber
 	, venueSchema: venueSchema
 	, Venue: Venue
+	, showSchema: showSchema
+	, Show: Show
 }
