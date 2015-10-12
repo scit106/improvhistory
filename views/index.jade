@@ -37,7 +37,7 @@ block content
 				if shows
 					each show in shows
 						tr(id=show.slug)
-							td.show-date= show.date
+							td.show-date= show.formattedDate
 							td.show-time= show.time
 							td.show-location
 								if show.venue

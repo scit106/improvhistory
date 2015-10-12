@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
+	, moment = require('moment');
 
 
 //Schemas
@@ -24,6 +25,20 @@ var showSchema = new mongoose.Schema({
 	ticketLink: {type: String},
 	showName: {type: String},
 	showDescription: {type: String}
+},
+{
+	toJSON: {
+		virtuals: true
+		, getters: true
+	}
+	, toObject: {
+		virtuals: true
+		, getters: true
+	}
+});
+
+showSchema.virtual('formattedDate').get(function(){
+	return moment(this.date).format('MMMM Do, YYYY');
 });
 
 
@@ -31,6 +46,7 @@ var showSchema = new mongoose.Schema({
 var Subscriber = mongoose.model('Subscriber', subscriberSchema);
 var Venue = mongoose.model('Venue', venueSchema);
 var Show = mongoose.model('Show', showSchema);
+
 
 // Exports
 module.exports = {
