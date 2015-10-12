@@ -109,7 +109,11 @@ app.get('/shows', function(req, res) {
 });
 
 app.get('/shows/edit', function(req, res){
-	res.render('show');
+	models.Venue.find(function(err, allVenues){
+		if (!err){
+			res.render('show', {venues: allVenues});
+		}
+	});
 });
 
 app.get('/newsletter', function(req, res) {
