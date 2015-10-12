@@ -64,9 +64,9 @@ block content
 							h3.venue-name= show.venue.displayName
 							if show.venue
 								h4.show-name= show.showName
-								a.address(href=show.addressLink target="_blank")
-									p= show.addressStreet
-									p= show.addressCity
+								a.address(href=show.venue.addressLink target="_blank")
+									p= show.venue.addressStreet
+									p= show.venue.addressCity
 							p.mobile-only= show.time
 							p.show-description= show.showDescription
 		.section.brown-background#cast

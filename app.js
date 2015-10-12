@@ -35,12 +35,13 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function(req, res) {
-	models.Show.find(function(err, shows){
+	models.Show.find().populate('venue').exec(function(err, shows){
 		if (err) {
 			console.log('render error');
 			res.render('index', {showError: err});
 		}
 		else {
+
 			res.render('index', {shows: shows});
 		}
 	});
