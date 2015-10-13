@@ -10,7 +10,9 @@
     "mongodb": "1.4.7",
     "mongoose": "3.8.12",
     "supervisor": "*",
-    "jade": "1.9.2"
+    "jade": "1.9.2",
+    "underscore": "1.x",
+    "moment": "2.x"
   },
   "engines": {
     "node": "0.10.25"

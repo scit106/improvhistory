@@ -3,8 +3,12 @@ var express = require('express')
   , path = require('path')
   , mongo = require('mongodb')
   , mongoose = require('mongoose')
+  , _ = require('underscore')
+  , moment = require('moment')
   , config = require('./config.js')
   , models = require('./models.js')
+  // , shows = require('./shows.js')
+  , seeds = require('./seeds.js')
   , jade = require('jade');
 
 var app = express();
@@ -24,14 +28,144 @@ app.use(express.bodyParser()); // this will be deprecated soon, replace with
 mongoose.connect(config.mongoURL);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-  console.log('Opened mongoose connection');
+db.once('open', function() {
+	// seeds.seedVenuesAndShows();
+	console.log('Opened mongoose connection');
 });
 
 app.use(express.static(__dirname + '/public'));
 
+
 app.get('/', function(req, res) {
-	res.render('index');
+	models.Show
+		.find({date: { $gte: moment().subtract(2, 'days').toDate()} })
+		.sort({date: 'asc'})
+		.populate('venue')
+		.exec(function(err, shows){
+		if (err) {
+			console.log('render error');
+			res.render('index', {showError: err});
+		}
+		else {
+			res.render('index', {shows: shows});
+		}
+	});
+});
+
+app.get('/venues', function(req, res) {
+	models.Venue.find(function(err, venues) {
+		if (!err && venues) {
+			res.send(venues);
+		}
+		else {
+			res.send(err);
+		}
+	});
+});
+
+app.get('/venues/edit', function(req, res){
+	res.render('venue');
+});
+
+app.post('/venues/edit', function(req, res) {
+	if (req.body.passPhrase == process.env['IPH_PASS_PHRASE'])
+	{
+		var shortName;
+		if (shortName = req.body.shortName){
+			models.Venue.findOne({shortName: shortName}, function(err, existingVenue) {
+				if (existingVenue) {
+					existingVenue.update({shortName: shortName}, req.body, function(err){
+						if (err) {
+							res.send(err);
+						}
+						else {
+							res.send(200);
+						}
+					});
+				}
+				else if (err) {
+					console.log('Error creating or updating a venue');
+					console.log(err);
+					res.send(err);
+				}
+				else {
+					models.Venue.create(req.body, function(err, newVenue) {
+						if (newVenue && !err) {
+							res.send(200);
+						}
+						else {
+							console.log('Error creating new venue');
+							console.log(err);
+							res.send(err);
+						}
+					});
+				}
+			});
+		}
+	}
+	else {
+		res.send(403)
+	}
+});
+
+app.get('/shows', function(req, res) {
+	models.Show.find(function(err, shows) {
+		if (!err && shows) {
+			res.send(shows);
+		}
+		else {
+			res.send(err);
+		}
+	});
+});
+
+app.get('/shows/edit', function(req, res){
+	models.Venue.find(function(err, allVenues){
+		if (!err){
+			res.render('show', {venues: allVenues});
+		}
+	});
+});
+
+app.post('/shows/edit', function(req, res) {
+	if (req.body.passPhrase == process.env['IPH_PASS_PHRASE'])
+	{
+		var slug;
+		if (slug = req.body.slug){
+			models.Show.findOne({slug: slug}, function(err, existingShow) {
+				if (existingShow) {
+					existingShow.update({slug: slug}, req.body, function(err){
+						if (err) {
+							res.send(err);
+						}
+						else {
+							res.send(200);
+						}
+					});
+				}
+				else if (err) {
+					console.log('Error creating or updating a show');
+					console.log(err);
+					res.send(err);
+				}
+				else {
+					models.Show.create(req.body, function(err, newShow) {
+						if (newShow && !err) {
+							res.send(200);
+						}
+						else {
+							console.log('Error creating new show');
+							console.log(err);
+							res.send(err);
+						}
+					});
+				}
+			});
+		}
+	}
+	else {
+		res.send(403)
+	}
 });
 
 app.get('/newsletter', function(req, res) {
@@ -85,7 +219,7 @@ app.post('/subscribers', function(req, res) {
 		res.send(400, 'Please Enter an Email Address');
 });
 
-app.del('/subscribers', function (req, res) {
+app.delete('/subscribers', function (req, res) {
 	var unsubscribeEmail = req.query.email
 	if (unsubscribeEmail) {
 		models.Subscriber.findOne({email: unsubscribeEmail}, function (err, unsubscriber){

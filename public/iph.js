@@ -52,4 +52,45 @@ $( document ).ready(function(){
 			});
 	}
 
+	$('#venue-update').submit(function(event){
+		event.preventDefault();
+		var venueInfo = $('form#venue-update').serialize();
+		updateVenue(venueInfo);
+		});
+
+	function updateVenue(input){
+		$.post(
+			'/venues/edit'
+			, input
+			)
+			.done(function (data){
+				$('#venue-update').addClass('hide');
+				$('#venue-success').removeClass('hide');
+			})
+			.error(function(err){
+				alert(err.responseText);
+			});
+	}
+
+	$('#show-update').submit(function(event){
+		event.preventDefault();
+		var showInfo = $('form#show-update').serialize();
+		updateShow(showInfo);
+		});
+
+	function updateShow(input){
+		$.post(
+			'/shows/edit'
+			, input
+			)
+			.done(function (data){
+				$('#show-update').addClass('hide');
+				$('#show-success').removeClass('hide');
+			})
+			.error(function(err){
+				alert(err.responseText);
+			});
+	}
+
+
 });

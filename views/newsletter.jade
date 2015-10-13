@@ -1,71 +1,35 @@
 extends ./main.jade
 block content
 	.container
-		.nav.off-white-background
-			.centered-max-width
-				#logo
-					img(src="images/improv-hist-long.png")
-				ul.navlinks
-					li.navlink
-						a#about(href="/#welcome")
-							| About
-					li.navlink
-						a#shows(href="/#schedule")
-							| Shows
-					li.navlink
-						a#castlist(href="/#cast")
-							| Cast
-					li.navlink
-						a#contactus(href="/#contact")
-							| Contact
-	#newsletter-intro.section.brown-background
-		.content
-			h2.serif-font.section-header.white
-				span.first-letter S
-				| ign up for our 
-				span.first-letter N
-				| ewsletter
-			p.sans-font.white.center.centered-content.text-max-width
-				| Want to stay up-to-date with our show schedule, hear more hilarious history jokes, or watch exclusive video sketches? Enter your information below and we'll send you our monthly newsletter! We promise not to spam you or give out your email address to anyone else.
-			form#newsletter-subscribe.center.centered-content
-				label.serif-font.white
-					| Your Email:
-					input.sans-font.center(type='email', name='email', placeholder='*Required', required='')
-				label.serif-font.white
-					| Your First Name:
-					input.sans-font.center(type='text', name='firstName')
-				label.serif-font.white
-					| Your Last Name:
-					input.sans-font.center(type='text', name='lastName')
-				input#newsletter-submit.ticket-link.brown.sans-font.off-white-background(type='submit', value='Sign Up!')
-			#subscribe-success.hide.centered-content.center
-				h2.serif-font.white
-					span.first-letter T
-						| hank 
-					span.first-letter Y
-						| ou!
-				p.white.sans-font.text-max-width
-					| You have been added to our newsletter list! You will receive about one email per month from us. If you ever want to unsubscribe, just follow the link in the email. 
-					a(href='/') Click Here
-					|  to return to the home page.
-	#contact.section.off-white-background
-		h2.section-header.serif-font
-			span.first-letter G
-			| et In 
-			span.first-letter T
-			| ouch
-		a#email-link.contact-link(href='mailto:improvisedhistory@gmail.com')
-			.contact-block
-				.circle.brown-background
-					i.fa.fa-envelope.white
-				.contact-text.sans-font EMAIL
-		a#facebook-link.contact-link(href='https://www.facebook.com/improvhistory')
-			.contact-block
-				.circle.brown-background
-					i.fa.fa-facebook.white
-				.contact-text.sans-font FACEBOOK
-		a#twitter-link.contact-link(href='https://twitter.com/improvhistory')
-			.contact-block
-				.circle.brown-background
-					i.fa.fa-twitter.white
-				.contact-text.sans-font TWITTER
+		include ./nav.jade
+		#newsletter-intro.section.brown-background.form-page-intro
+			.content
+				h2.serif-font.section-header.white
+					span.first-letter S
+					| ign up for our 
+					span.first-letter N
+					| ewsletter
+				p.sans-font.white.center.centered-content.text-max-width
+					| Want to stay up-to-date with our show schedule, hear more hilarious history jokes, or watch exclusive video sketches? Enter your information below and we'll send you our monthly newsletter! We promise not to spam you or give out your email address to anyone else.
+				form#newsletter-subscribe.center.centered-content
+					label.serif-font.white
+						| Your Email:
+						input.sans-font.center(type='email', name='email', placeholder='*Required', required='')
+					label.serif-font.white
+						| Your First Name:
+						input.sans-font.center(type='text', name='firstName')
+					label.serif-font.white
+						| Your Last Name:
+						input.sans-font.center(type='text', name='lastName')
+					input#newsletter-submit.ticket-link.brown.sans-font.off-white-background(type='submit', value='Sign Up!')
+				#subscribe-success.hide.centered-content.center.form-success
+					h2.serif-font.white
+						span.first-letter T
+							| hank 
+						span.first-letter Y
+							| ou!
+					p.white.sans-font.text-max-width
+						| You have been added to our newsletter list! You will receive about one email per month from us. If you ever want to unsubscribe, just follow the link in the email. 
+						a(href='/') Click Here
+						|  to return to the home page.
+		include ./contact.jade
