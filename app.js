@@ -37,7 +37,11 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function(req, res) {
-	models.Show.find({date: { $gte: moment().subtract(2, 'days').toDate()} }).populate('venue').exec(function(err, shows){
+	models.Show
+		.find({date: { $gte: moment().subtract(2, 'days').toDate()} })
+		.sort({date: 'asc'})
+		.populate('venue')
+		.exec(function(err, shows){
 		if (err) {
 			console.log('render error');
 			res.render('index', {showError: err});
@@ -64,37 +68,43 @@ app.get('/venues/edit', function(req, res){
 });
 
 app.post('/venues/edit', function(req, res) {
-	var shortName;
-	if (shortName = req.body.shortName){
-		models.Venue.findOne({shortName: shortName}, function(err, existingVenue) {
-			if (existingVenue) {
-				existingVenue.update({shortName: shortName}, req.body, function(err){
-					if (err) {
-						res.send(err);
-					}
-					else {
-						res.send(200);
-					}
-				});
-			}
-			else if (err) {
-				console.log('Error creating or updating a venue');
-				console.log(err);
-				res.send(err);
-			}
-			else {
-				models.Venue.create(req.body, function(err, newVenue) {
-					if (newVenue && !err) {
-						res.send(200);
-					}
-					else {
-						console.log('Error creating new venue');
-						console.log(err);
-						res.send(err);
-					}
-				});
-			}
-		});
+	if (req.body.passPhrase == process.env['IPH_PASS_PHRASE'])
+	{
+		var shortName;
+		if (shortName = req.body.shortName){
+			models.Venue.findOne({shortName: shortName}, function(err, existingVenue) {
+				if (existingVenue) {
+					existingVenue.update({shortName: shortName}, req.body, function(err){
+						if (err) {
+							res.send(err);
+						}
+						else {
+							res.send(200);
+						}
+					});
+				}
+				else if (err) {
+					console.log('Error creating or updating a venue');
+					console.log(err);
+					res.send(err);
+				}
+				else {
+					models.Venue.create(req.body, function(err, newVenue) {
+						if (newVenue && !err) {
+							res.send(200);
+						}
+						else {
+							console.log('Error creating new venue');
+							console.log(err);
+							res.send(err);
+						}
+					});
+				}
+			});
+		}
+	}
+	else {
+		res.send(403)
 	}
 });
 
@@ -118,37 +128,43 @@ app.get('/shows/edit', function(req, res){
 });
 
 app.post('/shows/edit', function(req, res) {
-	var slug;
-	if (slug = req.body.slug){
-		models.Show.findOne({slug: slug}, function(err, existingShow) {
-			if (existingShow) {
-				existingShow.update({slug: slug}, req.body, function(err){
-					if (err) {
-						res.send(err);
-					}
-					else {
-						res.send(200);
-					}
-				});
-			}
-			else if (err) {
-				console.log('Error creating or updating a show');
-				console.log(err);
-				res.send(err);
-			}
-			else {
-				models.Show.create(req.body, function(err, newShow) {
-					if (newShow && !err) {
-						res.send(200);
-					}
-					else {
-						console.log('Error creating new show');
-						console.log(err);
-						res.send(err);
-					}
-				});
-			}
-		});
+	if (req.body.passPhrase == process.env['IPH_PASS_PHRASE'])
+	{
+		var slug;
+		if (slug = req.body.slug){
+			models.Show.findOne({slug: slug}, function(err, existingShow) {
+				if (existingShow) {
+					existingShow.update({slug: slug}, req.body, function(err){
+						if (err) {
+							res.send(err);
+						}
+						else {
+							res.send(200);
+						}
+					});
+				}
+				else if (err) {
+					console.log('Error creating or updating a show');
+					console.log(err);
+					res.send(err);
+				}
+				else {
+					models.Show.create(req.body, function(err, newShow) {
+						if (newShow && !err) {
+							res.send(200);
+						}
+						else {
+							console.log('Error creating new show');
+							console.log(err);
+							res.send(err);
+						}
+					});
+				}
+			});
+		}
+	}
+	else {
+		res.send(403)
 	}
 });
 

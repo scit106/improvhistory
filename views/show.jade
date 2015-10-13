@@ -38,6 +38,9 @@ block content
 								option(value=venue._id)= venue.displayName
 				else
 					p Error - No Venues Loaded. Please try again later.
+				label.serif-font.white
+					| Secret Pass Phrase
+					input.sans-font.center(type='password', name='passPhrase')
 				input#show-submit.ticket-link.brown.sans-font.off-white-background(type='submit', value='Save!')
 			#show-success.hide.centered-content.center.form-success
 				h2.serif-font.white
