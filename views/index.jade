@@ -44,7 +44,7 @@ block content
 									= show.venue.displayName
 							if show.ticketLink
 								td.tickets
-									a.ticket-link(href=ticketLink)
+									a.ticket-link.white.brown-background(href=show.ticketLink) Click Here!
 							else
 								td.tickets Coming Soon
 						tr.hide.location-info.lighter-off-white-background(id=show.slug + '-expand' )
