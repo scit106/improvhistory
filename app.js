@@ -4,6 +4,7 @@ var express = require('express')
   , mongo = require('mongodb')
   , mongoose = require('mongoose')
   , _ = require('underscore')
+  , moment = require('moment')
   , config = require('./config.js')
   , models = require('./models.js')
   // , shows = require('./shows.js')
@@ -36,7 +37,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function(req, res) {
-	models.Show.find().populate('venue').exec(function(err, shows){
+	models.Show.find({date: { $gte: moment().subtract(2, 'days').toDate()} }).populate('venue').exec(function(err, shows){
 		if (err) {
 			console.log('render error');
 			res.render('index', {showError: err});

@@ -38,7 +38,7 @@ var showSchema = new mongoose.Schema({
 });
 
 showSchema.virtual('formattedDate').get(function(){
-	return moment(this.date).format('MMMM Do, YYYY');
+	return moment.utc(this.date).format('MMMM Do, YYYY');
 });
 
 
