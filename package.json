@@ -8,7 +8,7 @@
   "dependencies": {
     "express": "3.x",
     "mongodb": "2.0.x",
-    "mongoose": "3.8.12",
+    "mongoose": "4.1.x",
     "supervisor": "*",
     "jade": "1.9.2",
     "underscore": "1.x",
