@@ -188,6 +188,10 @@ app.get('/subscribers', function(req, res) {
 	});
 });
 
+app.get('/audition', function(req, res) {
+	res.render('audition');
+});
+
 // add someone to the email list
 app.post('/subscribers', function(req, res) {
 	if (req.body.email) {
