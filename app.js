@@ -120,11 +120,36 @@ app.get('/shows', function(req, res) {
 });
 
 app.get('/shows/edit', function(req, res){
-	models.Venue.find(function(err, allVenues){
-		if (!err){
-			res.render('show', {venues: allVenues});
+	models.Show.find(function(err, shows) {
+		if (!err && shows) {
+			res.render('showsEdit', {shows: shows});
+		}
+		else {
+			res.send(err);
 		}
 	});
+});
+
+app.get('/shows/edit/:showId', function(req, res){
+	models.Show
+		.findById(req.params.showId)
+		.populate('venue')
+		.exec(function(err, show){
+			if (!err) {
+				models.Venue.find(function(err, allVenues){
+					console.log(show)
+					res.render('show', {show: show, venues: allVenues});
+				});
+			}
+		});
+	// models.Venue.find(function(err, allVenues){
+	// 	if (!err){
+	// 		res.render('show', {venues: allVenues});
+	// 	}
+	// 	else {
+	// 		res.send(500)
+	// 	}
+	// });
 });
 
 app.post('/shows/edit', function(req, res) {

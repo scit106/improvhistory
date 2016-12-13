@@ -10,32 +10,33 @@ block content
 				span.first-letter S
 				| how
 			p.sans-font.white.center.centered-content.text-max-width
-				|  Or update an existing one by using the same slug
+				|  Or update an existing one
 			form#show-update.center.centered-content
 				label.serif-font.white
 					| Slug
-					input.sans-font.center(type='text', name='slug', placeholder='*Required', required=true)
+					input.sans-font.center(type='text', name='slug', placeholder='*Required', required=true, value=show.slug)
 				label.serif-font.white
 					| Date
-					input.sans-font.center(type='text', name='date' placeholder='YYYY-MM-DD')
+					input.sans-font.center(type='text', name='date' placeholder='YYYY-MM-DD', value=show.date)
 				label.serif-font.white
 					| Time
-					input.sans-font.center(type='text', name='time' placeholder='HH:MM PM')
+					input.sans-font.center(type='text', name='time' placeholder='HH:MM PM', value=show.time)
 				label.serif-font.white
 					| Ticket Link
-					input.sans-font.center(type='text', name='ticketLink' placeholder='E.g., http://eventbrite.com/my-event')
+					input.sans-font.center(type='text', name='ticketLink' placeholder='E.g., http://eventbrite.com/my-event', value=show.ticketLink)
 				label.serif-font.white
 					| Show Name
-					input.sans-font.center(type='text', name='showName')
+					input.sans-font.center(type='text', name='showName', value=show.showName)
 				label.serif-font.white
 					| Show Description
 					textarea.sans-font.center(name='showDescription')
+						=show.showDescription
 				if venues
 					label.serif-font.white
 						| Venue
 						select.sans-font.center(name='venue')
 							each venue in venues
-								option(value=venue._id)= venue.displayName
+								option(value=venue._id, selected=(venue.shortName == show.venue.shortName))= venue.displayName
 				else
 					p Error - No Venues Loaded. Please try again later.
 				label.serif-font.white
