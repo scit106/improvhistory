@@ -137,28 +137,25 @@ app.get('/shows/edit/:showId', function(req, res){
 		.exec(function(err, show){
 			if (!err) {
 				models.Venue.find(function(err, allVenues){
-					console.log(show)
 					res.render('show', {show: show, venues: allVenues});
 				});
 			}
 		});
-	// models.Venue.find(function(err, allVenues){
-	// 	if (!err){
-	// 		res.render('show', {venues: allVenues});
-	// 	}
-	// 	else {
-	// 		res.send(500)
-	// 	}
-	// });
 });
 
 app.post('/shows/edit', function(req, res) {
 	if (req.body.passPhrase == process.env['IPH_PASS_PHRASE'])
 	{
 		var slug;
-		if (slug = req.body.slug){
-			models.Show.findOne({slug: slug}, function(err, existingShow) {
-				if (existingShow) {
+		console.log('going to find a show');
+		console.log(req.body.slug);
+		if (req.body.slug){
+			models.Show.find({slug: slug}, function(err, existingShow) {
+				if (existingShow.length) {
+					console.log('updating existing show. it was:');
+					console.log(existingShow);
+					console.log('it should be');
+					console.log(req.body);
 					existingShow.update({slug: slug}, req.body, function(err){
 						if (err) {
 							res.send(err);
@@ -186,6 +183,9 @@ app.post('/shows/edit', function(req, res) {
 					});
 				}
 			});
+		}
+		else {
+			res.send(400)
 		}
 	}
 	else {
