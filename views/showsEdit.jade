@@ -1,0 +1,31 @@
+extends ./main.jade
+block content
+	.section.off-white-background#schedule
+		table.sans-font#show-dates
+			tr
+				th.show-date DATE
+				th.show-time TIME
+				th.show-location
+				th.tickets EDIT
+			if showError
+				tr
+					td.centered-content(colspan="4")
+						h3 Problem Loading Shows. Please try again later.
+						p.sans-font 
+							| If the problem persists, please 
+							a(href="mailto:improvisedhistory@gmail.com") email us.
+			if shows
+				each show in shows
+					tr(id=show.slug)
+						td.show-date= show.formattedDate
+						td.show-time= show.time
+						td.show-location= show.showName
+						td.tickets
+							a.ticket-link.white.brown-background(href='/shows/edit/' + show._id) Edit
+			else
+				tr
+					td.centered-content(colspan="4")
+						h3.black.sans-font No Shows Found
+						p.black.sans-font 
+							| Want us to perform for you? 
+							a(href="mailto:improvisedhistory@gmail.com") Send us an email!

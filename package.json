@@ -3,21 +3,19 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "supervisor node app.js"
   },
   "dependencies": {
+    "dotenv": "^4.0.0",
     "express": "3.x",
+    "jade": "1.9.2",
+    "moment": "2.x",
     "mongodb": "2.0.x",
     "mongoose": "4.1.x",
     "supervisor": "*",
-    "jade": "1.9.2",
-    "underscore": "1.x",
-    "moment": "2.x"
+    "underscore": "1.x"
   },
   "engines": {
-    "node": "0.10.25"
-  },
-  "scripts": {
-    "start": "supervisor node app.js"
+    "node": "7.9.0"
   }
 }

@@ -11,6 +11,7 @@ var express = require('express')
   , seeds = require('./seeds.js')
   , jade = require('jade');
 
+require('dotenv').config();
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -68,7 +69,7 @@ app.get('/venues/edit', function(req, res){
 });
 
 app.post('/venues/edit', function(req, res) {
-	if (req.body.passPhrase == process.env['IPH_PASS_PHRASE'])
+	if (req.body.passPhrase == process.env.IPH_PASS_PHRASE)
 	{
 		var shortName;
 		if (shortName = req.body.shortName){
@@ -120,51 +121,69 @@ app.get('/shows', function(req, res) {
 });
 
 app.get('/shows/edit', function(req, res){
-	models.Venue.find(function(err, allVenues){
-		if (!err){
-			res.render('show', {venues: allVenues});
+	models.Show.find(function(err, shows) {
+		if (!err && shows) {
+			res.render('showsEdit', {shows: shows});
+		}
+		else {
+			res.send(err);
 		}
 	});
 });
 
-app.post('/shows/edit', function(req, res) {
-	if (req.body.passPhrase == process.env['IPH_PASS_PHRASE'])
-	{
-		var slug;
-		if (slug = req.body.slug){
-			models.Show.findOne({slug: slug}, function(err, existingShow) {
-				if (existingShow) {
-					existingShow.update({slug: slug}, req.body, function(err){
-						if (err) {
-							res.send(err);
-						}
-						else {
-							res.send(200);
-						}
-					});
-				}
-				else if (err) {
-					console.log('Error creating or updating a show');
+app.get('/shows/edit/:showId', function(req, res){
+	models.Show
+		.findById(req.params.showId)
+		.populate('venue')
+		.exec(function(err, show){
+			if (!err) {
+				models.Venue.find(function(err, allVenues) {
+					res.render('show', {show: show, venues: allVenues});
+				});
+			}
+	});
+});
+
+app.post('/shows/edit/:showId', function(req, res) {
+	if (req.body.passPhrase == process.env.IPH_PASS_PHRASE) {
+		if (req.params.showId) {
+			models.Show.update({_id: req.params.showId}, req.body, function(err, response) {
+				if (err) {
 					console.log(err);
 					res.send(err);
 				}
 				else {
-					models.Show.create(req.body, function(err, newShow) {
-						if (newShow && !err) {
-							res.send(200);
-						}
-						else {
-							console.log('Error creating new show');
-							console.log(err);
-							res.send(err);
-						}
-					});
+					res.send(200);
 				}
 			});
 		}
+		else {
+			res.send(400);
+		}
 	}
 	else {
-		res.send(403)
+		res.send(403);
+	}
+});
+
+app.get('/shows/new', function(req, res) {
+	models.Venue.find(function(err, allVenues) {
+		res.render('show', {show: {venue: {}}, venues: allVenues});
+	});
+});
+
+app.post('/shows/new', function(req, res) {
+	if (req.body.passPhrase == process.env.IPH_PASS_PHRASE) {
+		models.Show.create(req.body, function(err, newShow) {
+			if (newShow && !err) {
+				res.send(200);
+			}
+			else {
+				console.log('Error creating new show');
+				console.log(err);
+				res.send(err);
+			}
+		});
 	}
 });
 

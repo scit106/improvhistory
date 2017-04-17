@@ -80,7 +80,7 @@ $( document ).ready(function(){
 
 	function updateShow(input){
 		$.post(
-			'/shows/edit'
+			window.location.href
 			, input
 			)
 			.done(function (data){
