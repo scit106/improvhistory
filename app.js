@@ -11,6 +11,7 @@ var express = require('express')
   , seeds = require('./seeds.js')
   , jade = require('jade');
 
+require('dotenv').config();
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -68,7 +69,7 @@ app.get('/venues/edit', function(req, res){
 });
 
 app.post('/venues/edit', function(req, res) {
-	if (req.body.passPhrase == process.env['IPH_PASS_PHRASE'])
+	if (req.body.passPhrase == process.env.IPH_PASS_PHRASE)
 	{
 		var shortName;
 		if (shortName = req.body.shortName){
@@ -143,53 +144,30 @@ app.get('/shows/edit/:showId', function(req, res){
 		});
 });
 
-app.post('/shows/edit', function(req, res) {
-	if (req.body.passPhrase == process.env['IPH_PASS_PHRASE'])
+app.post('/shows/edit/:showId', function(req, res) {
+	if (req.body.passPhrase == process.env.IPH_PASS_PHRASE)
 	{
 		var slug;
 		console.log('going to find a show');
-		console.log(req.body.slug);
-		if (req.body.slug){
-			models.Show.find({slug: slug}, function(err, existingShow) {
-				if (existingShow.length) {
-					console.log('updating existing show. it was:');
-					console.log(existingShow);
-					console.log('it should be');
-					console.log(req.body);
-					existingShow.update({slug: slug}, req.body, function(err){
-						if (err) {
-							res.send(err);
-						}
-						else {
-							res.send(200);
-						}
-					});
-				}
-				else if (err) {
-					console.log('Error creating or updating a show');
-					console.log(err);
+		console.log(req.params.showId);
+		if (req.params.showId) {
+			models.Show.update({_id: req.params.showId}, req.body, function(err, response) {
+				console.log('updating show')
+				console.log(response);
+				if (err) {
 					res.send(err);
 				}
 				else {
-					models.Show.create(req.body, function(err, newShow) {
-						if (newShow && !err) {
-							res.send(200);
-						}
-						else {
-							console.log('Error creating new show');
-							console.log(err);
-							res.send(err);
-						}
-					});
+					res.send(200);
 				}
 			});
 		}
 		else {
-			res.send(400)
+			res.send(400);
 		}
 	}
 	else {
-		res.send(403)
+		res.send(403);
 	}
 });
 
