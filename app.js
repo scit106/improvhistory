@@ -137,24 +137,19 @@ app.get('/shows/edit/:showId', function(req, res){
 		.populate('venue')
 		.exec(function(err, show){
 			if (!err) {
-				models.Venue.find(function(err, allVenues){
+				models.Venue.find(function(err, allVenues) {
 					res.render('show', {show: show, venues: allVenues});
 				});
 			}
-		});
+	});
 });
 
 app.post('/shows/edit/:showId', function(req, res) {
-	if (req.body.passPhrase == process.env.IPH_PASS_PHRASE)
-	{
-		var slug;
-		console.log('going to find a show');
-		console.log(req.params.showId);
+	if (req.body.passPhrase == process.env.IPH_PASS_PHRASE) {
 		if (req.params.showId) {
 			models.Show.update({_id: req.params.showId}, req.body, function(err, response) {
-				console.log('updating show')
-				console.log(response);
 				if (err) {
+					console.log(err);
 					res.send(err);
 				}
 				else {
@@ -168,6 +163,27 @@ app.post('/shows/edit/:showId', function(req, res) {
 	}
 	else {
 		res.send(403);
+	}
+});
+
+app.get('/shows/new', function(req, res) {
+	models.Venue.find(function(err, allVenues) {
+		res.render('show', {show: {venue: {}}, venues: allVenues});
+	});
+});
+
+app.post('/shows/new', function(req, res) {
+	if (req.body.passPhrase == process.env.IPH_PASS_PHRASE) {
+		models.Show.create(req.body, function(err, newShow) {
+			if (newShow && !err) {
+				res.send(200);
+			}
+			else {
+				console.log('Error creating new show');
+				console.log(err);
+				res.send(err);
+			}
+		});
 	}
 });
 
