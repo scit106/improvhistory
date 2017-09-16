@@ -158,11 +158,6 @@ input[type="text"], input[type="email"] {
 	text-align: center;
 }
 
-.paragraph {
-	max-width: 50%;
-	float: right;
-}
-
 .section:before,
 .section:after {
     content:"";
@@ -277,25 +272,21 @@ input[type="text"], input[type="email"] {
 	max-height: 75px;
 }
 
-#welcome {
-	margin-top: 75px;
-	padding-top: 90px;
-	padding-bottom: 90px;
-	background-image: url(images/GlobeBk.jpg);
-	background-position: 55% 90%; /* 45% 75% also looks good */
-}
-
-#welcome h2 {
-	margin-bottom: 20px;
-	margin-top: 0px;
-	padding-left: 15px;
-	line-height: 1;
+#about {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 30px;
+	min-height: 0;
 	text-align: right;
 }
 
-#welcome h1 {
-	margin-bottom: 0px;
-	line-height: 1;
+#welcome {
+	margin-top: 75px;
+	padding-top: 100px;
+	padding-bottom: 90px;
+	background-image: linear-gradient(90deg, rgba(48, 28, 18, 1), transparent 50%, rgba(48, 28, 18, 1)), url(images/IHPhotoBannerWebsitev1.jpg);
+	background-position: 100%;
+	background-size: 100%;
 }
 
 #show-dates {
@@ -431,10 +422,11 @@ input[type="text"], input[type="email"] {
 	}
 	#welcome {
 		background-image: none;
+		display: none;
 	}
-	.paragraph {
-		max-width: 100%;
-		float: left;
+	#about {
+		text-align: left;
+		padding-top: 100px;
 	}
 }
 
